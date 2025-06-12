@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: -8763276424009538068}
   m_Layer: 3
   m_Name: Villager_01
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1152175497
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -2834388317192760256, guid: 118f7390823a206439bab02452c9463b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
