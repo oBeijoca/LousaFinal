@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5118830503706888232}
   - component: {fileID: 4850145281542769971}
   - component: {fileID: 4014476720317477872}
+  - component: {fileID: -7113915725466223126}
   m_Layer: 0
   m_Name: ClickMarker
   m_TagString: Untagged
@@ -100,3 +101,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2426f935df75a41a569cfa6be55eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 1
+--- !u!95 &-7113915725466223126
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289673638941501186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bfda4ee8c06e2b9439fc435d37bc3b35, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
