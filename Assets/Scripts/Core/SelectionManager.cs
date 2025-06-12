@@ -85,4 +85,12 @@ public class SelectionManager : MonoBehaviour
         DeselectAll();
     }
 
+    public List<Transform> GetSelectedTransforms()
+    {
+        List<Transform> list = new List<Transform>();
+        foreach (Unit unit in selectedUnits)
+            list.Add(unit.transform);
+        return list;
+    }
+
 }
