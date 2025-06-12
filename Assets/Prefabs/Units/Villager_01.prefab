@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: -0.053, z: 0}
-  m_LocalScale: {x: 0.66875, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.86937493, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 868812406308887590}
@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 6428142850703008177}
   - component: {fileID: 1917433017986691535}
   - component: {fileID: 5673387734143623002}
+  - component: {fileID: 3256339362918048387}
   m_Layer: 3
   m_Name: Villager_01
   m_TagString: Untagged
@@ -232,14 +233,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8358180109304160676}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_LinearDamping: 100
+  m_AngularDamping: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -250,7 +251,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5673387734143623002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,3 +266,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   selectionCircle: {fileID: 3237859332946316915}
+--- !u!114 &3256339362918048387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358180109304160676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908a3e1eede671d46a4692bb7a27043b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3

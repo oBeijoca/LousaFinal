@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Selectable
   - Water
   - UI
   - 
@@ -41,8 +41,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Selectable
-    uniqueID: 400413105
+  - name: UI
+    uniqueID: 3515321471
     locked: 0
   m_RenderingLayers:
   - Default

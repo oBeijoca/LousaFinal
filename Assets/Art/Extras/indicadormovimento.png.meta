@@ -127,7 +127,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 45
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: indicadormovimento_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 7
-        width: 6
-        height: 6
+        x: 16
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +169,10 @@ TextureImporter:
       name: indicadormovimento_2
       rect:
         serializedVersion: 2
-        x: 50
-        y: 1
-        width: 12
-        height: 13
+        x: 32
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +191,10 @@ TextureImporter:
       name: indicadormovimento_3
       rect:
         serializedVersion: 2
-        x: 69
-        y: 4
-        width: 21
-        height: 7
+        x: 48
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,11 +209,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: indicadormovimento_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36068f555f13f9a4ba63f417e28aad93
+      internalID: -771324861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: indicadormovimento_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a00a62f04eba28489d14f7ba74e22a9
+      internalID: 1652059073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 864e9d9e00f769a41ab30b7dab92d4f5
     internalID: 0
     vertices: []
     indices: 
@@ -227,6 +271,8 @@ TextureImporter:
       indicadormovimento_1: 2085418016709669845
       indicadormovimento_2: -2382384648564950107
       indicadormovimento_3: 95283429464902383
+      indicadormovimento_4: -771324861
+      indicadormovimento_5: 1652059073
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
