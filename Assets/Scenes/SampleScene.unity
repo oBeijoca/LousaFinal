@@ -614,6 +614,7 @@ MonoBehaviour:
   moveSpeed: 10
   dragSpeed: 1
   edgeSize: 20
+  edgeMoveSpeed: 1.5
   zoomSpeed: 2
   minZoom: 0.5
   maxZoom: 1.5

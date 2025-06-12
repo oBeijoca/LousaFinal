@@ -53,7 +53,8 @@ public class SelectionManager : MonoBehaviour
             {
                 UnitMovement move = unit.GetComponent<UnitMovement>();
                 if (move != null)
-                    move.MoveTo(destination);
+                    move.SetDestination(destination);
+
             }
 
             // Criar marcador visual do clique
