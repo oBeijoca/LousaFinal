@@ -1,97 +1,104 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    public LayerMask selectableLayer;
-    private List<Unit> selectedUnits = new List<Unit>();
-    public GameObject clickMarkerPrefab;
-    private GameObject currentClickMarker;
+    public static SelectionManager Instance;
+
+    private List<SelectableUnit> selectedObjects = new List<SelectableUnit>();
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Update()
     {
-        // Seleção com botão esquerdo
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D hit = Physics2D.OverlapPoint(mousePos, selectableLayer);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-            bool shiftHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-
-            if (!shiftHeld)
-                DeselectAll();
-
-            if (hit != null)
+            if (hit.collider != null)
             {
-                Unit unit = hit.GetComponent<Unit>();
+                // Tenta selecionar unidade
+                SelectableUnit unit = hit.collider.GetComponent<SelectableUnit>();
                 if (unit != null)
                 {
-                    if (selectedUnits.Contains(unit))
-                    {
-                        // Com shift: se já estiver selecionada, desmarcar
-                        if (shiftHeld)
-                        {
-                            unit.SetSelected(false);
-                            selectedUnits.Remove(unit);
-                        }
-                    }
-                    else
-                    {
-                        unit.SetSelected(true);
-                        selectedUnits.Add(unit);
-                    }
+                    if (!Input.GetKey(KeyCode.LeftShift))
+                        Deselect();
+
+                    Select(unit);
+                    return;
+                }
+
+                // Tenta selecionar edifício
+                Building building = hit.collider.GetComponent<Building>();
+                if (building != null)
+                {
+                    Deselect(); // só uma construção de cada vez
+                    building.OnSelect();
+                    return;
                 }
             }
+            else
+            {
+                // Só deseleciona se o clique não for em UI
+                if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+                    Deselect();
+            }
+
         }
+    }
 
-
-        // Movimento com botão direito
-        if (Input.GetMouseButtonDown(1) && selectedUnits.Count > 0)
+    public void Select(SelectableUnit unit)
+    {
+        if (unit != null && !selectedObjects.Contains(unit))
         {
-            Vector2 destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            foreach (Unit unit in selectedUnits)
-            {
-                UnitMovement move = unit.GetComponent<UnitMovement>();
-                if (move != null)
-                    move.SetDestination(destination);
-
-            }
-
-            // Criar marcador visual do clique
-            if (clickMarkerPrefab != null)
-            {
-                if (currentClickMarker != null)
-                    Destroy(currentClickMarker);
-
-                currentClickMarker = Instantiate(clickMarkerPrefab, destination, Quaternion.identity);
-            }
+            selectedObjects.Add(unit);
+            unit.SetSelected(true);
         }
     }
 
-    void DeselectAll()
+
+    public void AddToSelection(SelectableUnit unit)
     {
-        foreach (Unit u in selectedUnits)
-            u.SetSelected(false);
-        selectedUnits.Clear();
+        Select(unit);
     }
 
-    public void AddToSelection(Unit unit)
+    public void Deselect()
     {
-        if (!selectedUnits.Contains(unit))
-            selectedUnits.Add(unit);
+        foreach (var obj in selectedObjects)
+        {
+            if (obj != null)
+                obj.SetSelected(false);
+        }
+
+        selectedObjects.Clear();
+
+        if (BuildingUI.Instance != null)
+            BuildingUI.Instance.Hide();
     }
 
     public void DeselectAllPublic()
     {
-        DeselectAll();
+        Deselect();
+    }
+
+    public List<SelectableUnit> GetSelectedUnits()
+    {
+        return selectedObjects;
     }
 
     public List<Transform> GetSelectedTransforms()
     {
-        List<Transform> list = new List<Transform>();
-        foreach (Unit unit in selectedUnits)
-            list.Add(unit.transform);
-        return list;
-    }
+        List<Transform> result = new List<Transform>();
+        foreach (var obj in selectedObjects)
+        {
+            if (obj != null)
+                result.Add(obj.transform);
+        }
 
+        return result;
+    }
 }

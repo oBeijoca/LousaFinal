@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 4919749828245777674}
   - component: {fileID: 6428142850703008177}
   - component: {fileID: 1917433017986691535}
-  - component: {fileID: 5673387734143623002}
+  - component: {fileID: 1906171357928580045}
   - component: {fileID: 3256339362918048387}
   - component: {fileID: 770105799728260275}
   - component: {fileID: -8763276424009538068}
@@ -167,9 +167,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingLayerID: -1152175497
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2834388317192760256, guid: 118f7390823a206439bab02452c9463b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -254,7 +254,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5673387734143623002
+--- !u!114 &1906171357928580045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,10 +263,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8358180109304160676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aed9fdc03c067064499a4e1188ef5c7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1463a33ebb2d0584fb957f6717c92335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSelected: 0
   selectionCircle: {fileID: 3237859332946316915}
 --- !u!114 &3256339362918048387
 MonoBehaviour:

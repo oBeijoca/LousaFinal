@@ -66,15 +66,16 @@ public class SelectionBox : MonoBehaviour
         if (!shiftHeld)
             selectionManager.DeselectAllPublic();
 
-        foreach (Unit unit in Object.FindObjectsByType<Unit>(FindObjectsSortMode.None))
+        foreach (SelectableUnit unit in Object.FindObjectsByType<SelectableUnit>(FindObjectsSortMode.None))
         {
             Vector2 screenPos = cam.WorldToScreenPoint(unit.transform.position);
             if (screenPos.x >= min.x && screenPos.x <= max.x &&
                 screenPos.y >= min.y && screenPos.y <= max.y)
             {
                 unit.SetSelected(true);
-                selectionManager.AddToSelection(unit);
+                SelectionManager.Instance.AddToSelection(unit);
             }
         }
+
     }
 }
