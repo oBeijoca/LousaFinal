@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7113915725466223126}
   m_Layer: 0
   m_Name: ClickMarker
-  m_TagString: Untagged
+  m_TagString: ClickMarker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

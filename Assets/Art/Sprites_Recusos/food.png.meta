@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 057edc7b75a54614aa47ee3f66585c58
+guid: 7ccbe191fb17fbb479044061098fa8b0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4491312292937690789
-    second: arbusto_0
+      213: -1045181238759104467
+    second: food_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: arbusto_0
+      name: food_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 10
-        width: 14
-        height: 12
+        x: 4
+        y: 5
+        width: 22
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b519a1cf347aba1c0800000000000000
-      internalID: -4491312292937690789
+      spriteID: d206cd17335ce71f0800000000000000
+      internalID: -1045181238759104467
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      arbusto_0: -4491312292937690789
+      food_0: -1045181238759104467
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

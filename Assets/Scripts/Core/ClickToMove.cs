@@ -2,43 +2,68 @@ using UnityEngine;
 
 public class ClickToMove : MonoBehaviour
 {
-    public GameObject clickMarkerPrefab;
-    private GameObject currentMarker;
+    [SerializeField] private GameObject clickMarkerPrefab;
 
-    void Update()
+    private Camera mainCamera;
+
+    private void Start()
     {
-        if (Input.GetMouseButtonDown(1)) // botão direito
+        mainCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1)) // Botão direito
         {
-            // Converte posição do rato para coordenadas do mundo
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            worldPosition.z = 0f; // Garante que está no plano 2D
+            Vector2 mousePosition = Input.mousePosition;
+            Vector2 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
 
-            Debug.Log("Clique em: " + worldPosition);
+            Collider2D[] hits = Physics2D.OverlapPointAll(worldPosition);
+            foreach (var hitCollider in hits)
+            {
+                ResourceNode resource = hitCollider.GetComponent<ResourceNode>();
+                if (resource != null)
+                {
+                    Debug.Log("Clicou num recurso: " + resource.name);
+                    foreach (var unit in SelectionManager.Instance.GetSelectedUnits())
+                    {
+                        VillagerGathering gatherer = unit.GetComponent<VillagerGathering>();
+                        if (gatherer != null)
+                        {
+                            Transform townCenter = GameObject.FindWithTag("TownCenter")?.transform;
+                            if (townCenter != null)
+                                gatherer.StartGathering(resource, townCenter);
+                        }
+                    }
 
-            var selectedUnits = SelectionManager.Instance.GetSelectedUnits();
-            Debug.Log("Unidades selecionadas: " + selectedUnits.Count);
+                    ShowMarker(worldPosition);
+                    return;
+                }
+            }
 
-            foreach (var unit in selectedUnits)
+            // Caso não tenha sido um recurso andar
+            foreach (var unit in SelectionManager.Instance.GetSelectedUnits())
             {
                 UnitMovement movement = unit.GetComponent<UnitMovement>();
                 if (movement != null)
                 {
-                    Debug.Log("Movendo unidade: " + unit.name);
                     movement.SetDestination(worldPosition);
                 }
-                else
-                {
-                    Debug.LogWarning("UnitMovement não encontrado em: " + unit.name);
-                }
             }
 
-            if (clickMarkerPrefab != null)
-            {
-                if (currentMarker != null)
-                    Destroy(currentMarker);
+            ShowMarker(worldPosition);
+        }
+    }
 
-                currentMarker = Instantiate(clickMarkerPrefab, worldPosition, Quaternion.identity);
-            }
+    private void ShowMarker(Vector2 position)
+    {
+        if (clickMarkerPrefab != null)
+        {
+            GameObject existing = GameObject.FindWithTag("ClickMarker");
+            if (existing != null) Destroy(existing);
+
+            GameObject marker = Instantiate(clickMarkerPrefab, position, Quaternion.identity);
+            marker.tag = "ClickMarker";
         }
     }
 }
