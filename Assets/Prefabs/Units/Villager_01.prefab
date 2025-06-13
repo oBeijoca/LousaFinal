@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908a3e1eede671d46a4692bb7a27043b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 0.5
 --- !u!114 &770105799728260275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,9 +305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873bf67906df50849bd144ca0be77a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 10
+  carryCapacity: 10
   gatherInterval: 2
-  gatherAmount: 1
 --- !u!95 &-8763276424009538068
 Animator:
   serializedVersion: 7

@@ -9,18 +9,24 @@ public class ClickToMove : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
+        Debug.Log("ClickToMove iniciado. Câmara encontrada? " + (mainCamera != null));
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1)) // Botão direito
+        if (Input.GetMouseButtonDown(1))
         {
             Vector2 mousePosition = Input.mousePosition;
             Vector2 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
 
+            Debug.Log("Botão direito clicado na posição do rato: " + mousePosition + " | Posição no mundo: " + worldPosition);
+
             Collider2D[] hits = Physics2D.OverlapPointAll(worldPosition);
+            Debug.Log("Colisores encontrados: " + hits.Length);
+
             foreach (var hitCollider in hits)
             {
+                Debug.Log("Verificando colisão com: " + hitCollider.name);
                 ResourceNode resource = hitCollider.GetComponent<ResourceNode>();
                 if (resource != null)
                 {
@@ -30,9 +36,19 @@ public class ClickToMove : MonoBehaviour
                         VillagerGathering gatherer = unit.GetComponent<VillagerGathering>();
                         if (gatherer != null)
                         {
-                            Transform townCenter = GameObject.FindWithTag("TownCenter")?.transform;
-                            if (townCenter != null)
-                                gatherer.StartGathering(resource, townCenter);
+                            GameObject depositBuilding = GameObject.FindWithTag("Deposit");
+                            Transform depositPoint = depositBuilding?.transform.Find("DepositPoint");
+                            Transform targetDeposit = depositPoint != null ? depositPoint : depositBuilding?.transform;
+
+                            if (targetDeposit != null)
+                            {
+                                Debug.Log("A iniciar recolha no ponto: " + targetDeposit.name);
+                                gatherer.StartGathering(resource, targetDeposit);
+                            }
+                            else
+                            {
+                                Debug.LogWarning("Nenhum edifício de depósito válido encontrado!");
+                            }
                         }
                     }
 
@@ -41,12 +57,17 @@ public class ClickToMove : MonoBehaviour
                 }
             }
 
-            // Caso não tenha sido um recurso andar
+            Debug.Log("Nenhum recurso detetado. A mover unidade para " + worldPosition);
+
             foreach (var unit in SelectionManager.Instance.GetSelectedUnits())
             {
+                VillagerGathering gatherer = unit.GetComponent<VillagerGathering>();
+                if (gatherer != null) gatherer.StopGathering();
+
                 UnitMovement movement = unit.GetComponent<UnitMovement>();
                 if (movement != null)
                 {
+                    Debug.Log("A mover unidade: " + unit.name + " para " + worldPosition);
                     movement.SetDestination(worldPosition);
                 }
             }
