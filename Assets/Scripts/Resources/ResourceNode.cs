@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class ResourceNode : MonoBehaviour
 {
-    public enum ResourceType { Wood, Food, Gold, Stone }
-    public ResourceType type;
-    public int totalAmount = 50;
+    public enum ResourceType { Wood, Gold, Food, Stone }
+    public ResourceType resourceType;
+    public int amount = 10;
 
-    public int Gather(int amount)
+    public bool Gather(int quantity)
     {
-        int gathered = Mathf.Min(amount, totalAmount);
-        totalAmount -= gathered;
-        return gathered;
+        if (amount <= 0) return false;
+
+        amount -= quantity;
+        if (amount < 0) amount = 0;
+
+        return true;
     }
 
-    public bool HasResources()
-    {
-        return totalAmount > 0;
-    }
+    public bool IsDepleted() => amount <= 0;
 }

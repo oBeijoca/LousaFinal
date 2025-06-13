@@ -2,155 +2,110 @@ using UnityEngine;
 
 public class VillagerGathering : MonoBehaviour
 {
-    public int inventorySize = 10;
-    public float gatherInterval = 2f;
-    public int gatherAmount = 1;
-    public float searchRadius = 10f;
+    public enum GatherState { Idle, MovingToResource, Gathering, Returning }
+    public GatherState currentState = GatherState.Idle;
 
     private ResourceNode targetResource;
     private Transform townCenter;
-
-    private int currentInventory = 0;
-    private float gatherTimer = 0f;
+    private int inventory = 0;
+    private int maxInventory = 10;
     private UnitMovement movement;
 
-    private enum State { Idle, MovingToResource, Gathering, Returning, Depositing }
-    private State currentState = State.Idle;
+    private float gatherTimer = 0f;
+    private float gatherInterval = 1f;
 
     void Start()
     {
         movement = GetComponent<UnitMovement>();
+        Debug.Log($"{name} está em estado: {currentState}");
     }
 
     void Update()
     {
         switch (currentState)
         {
-            case State.MovingToResource:
-                if (targetResource == null)
-                {
-                    currentState = State.Idle;
-                    return;
-                }
-
-                if (ReachedTarget(targetResource.transform.position))
+            case GatherState.MovingToResource:
+                if (ReachedDestination(targetResource.transform.position))
                 {
                     Debug.Log($"{name} chegou ao recurso ({targetResource.name}), verificando disponibilidade...");
-                    currentState = State.Gathering;
+                    currentState = GatherState.Gathering;
                 }
                 break;
 
-            case State.Gathering:
-                if (targetResource == null || !targetResource.HasResources())
+            case GatherState.Gathering:
+                if (targetResource == null || targetResource.IsDepleted())
                 {
-                    Debug.Log($"{name} parou de recolher, recurso esgotado.");
-
-                    if (targetResource != null)
-                    {
-                        var old = targetResource;
-                        targetResource = FindClosestResource(old.type);
-                        if (targetResource != null)
-                        {
-                            Debug.Log($"{name} encontrou novo recurso: {targetResource.name}");
-                            movement.SetDestination(targetResource.transform.position);
-                            currentState = State.MovingToResource;
-                        }
-                        else
-                        {
-                            Debug.Log($"{name} não encontrou mais recursos do tipo {old.type}.");
-                            Destroy(old.gameObject);
-                            currentState = State.Idle;
-                        }
-                    }
-                    return;
+                    Debug.Log($"{name}: recurso esgotado. À procura de outro...");
+                    FindNewResource();
+                    break;
                 }
 
                 gatherTimer += Time.deltaTime;
                 if (gatherTimer >= gatherInterval)
                 {
                     gatherTimer = 0f;
-                    int gathered = targetResource.Gather(gatherAmount);
-                    currentInventory += gathered;
-
-                    Debug.Log($"{name} recolheu {gathered} ({currentInventory}/{inventorySize})");
-
-                    if (currentInventory >= inventorySize)
+                    if (targetResource.Gather(1))
                     {
-                        Debug.Log($"{name} inventário cheio. A ir ao Centro da Vila.");
-                        movement.SetDestination(townCenter.position);
-                        currentState = State.Returning;
+                        inventory++;
+                        Debug.Log($"{name} recolheu 1 ({inventory}/{maxInventory})");
+
+                        if (inventory >= maxInventory)
+                        {
+                            Debug.Log($"{name} inventário cheio. A ir ao Centro da Vila.");
+                            currentState = GatherState.Returning;
+                            movement.SetDestination(townCenter.position);
+                        }
                     }
                 }
                 break;
 
-            case State.Returning:
-                if (ReachedTarget(townCenter.position))
+            case GatherState.Returning:
+                if (ReachedDestination(townCenter.position))
                 {
                     Debug.Log($"{name} chegou ao Centro da Vila. A depositar...");
-                    currentState = State.Depositing;
-                }
-                break;
-
-            case State.Depositing:
-                Debug.Log($"{name} depositou {currentInventory} de {targetResource?.type}");
-                currentInventory = 0;
-
-                if (targetResource != null && targetResource.HasResources())
-                {
-                    Debug.Log($"{name} a voltar para o recurso ({targetResource.name})");
-                    gatherTimer = 0f;
+                    ResourceManager.Instance.AddResource(targetResource.resourceType, inventory);
+                    Debug.Log($"{name} depositou {inventory} de {targetResource.resourceType}");
+                    inventory = 0;
+                    currentState = GatherState.MovingToResource;
                     movement.SetDestination(targetResource.transform.position);
-                    currentState = State.MovingToResource;
-                }
-                else if (targetResource != null)
-                {
-                    Debug.Log($"{name} terminou porque o rescurso acabou.");
-                    Destroy(targetResource.gameObject);
-                    targetResource = null;
-                    currentState = State.Idle;
-                }
-                else
-                {
-                    currentState = State.Idle;
+                    Debug.Log($"{name} a voltar para o recurso ({targetResource.name})");
                 }
                 break;
         }
     }
 
-    private bool ReachedTarget(Vector3 target)
+    public void StartGathering(ResourceNode resource, Transform townCenter)
     {
-        return Vector2.Distance(transform.position, target) < 0.5f;
+        this.targetResource = resource;
+        this.townCenter = townCenter;
+        currentState = GatherState.MovingToResource;
+        movement.SetDestination(resource.transform.position);
+        Debug.Log($"{name} recebeu ordem para recolher: {resource.name} ({resource.resourceType})");
+        Debug.Log($"{name} começou a recolher {resource.resourceType} de {resource.name}");
     }
 
-    private ResourceNode FindClosestResource(ResourceNode.ResourceType type)
+    private bool ReachedDestination(Vector3 destination)
     {
-        var nodes = Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None);
-        ResourceNode closest = null;
-        float closestDist = Mathf.Infinity;
+        return Vector2.Distance(transform.position, destination) < 0.5f;
+    }
 
-        foreach (ResourceNode node in nodes)
+    private void FindNewResource()
+    {
+        ResourceNode[] nodes = FindObjectsByType<ResourceNode>(FindObjectsSortMode.None);
+        foreach (var node in nodes)
         {
-            if (node.type != type || !node.HasResources()) continue;
-
-            float dist = Vector2.Distance(transform.position, node.transform.position);
-            if (dist < closestDist && dist <= searchRadius)
+            if (node.resourceType == targetResource.resourceType && !node.IsDepleted())
             {
-                closest = node;
-                closestDist = dist;
+                Debug.Log($"{name} encontrou novo recurso: {node.name}");
+                targetResource = node;
+                currentState = GatherState.MovingToResource;
+                movement.SetDestination(node.transform.position);
+                return;
             }
         }
 
-        return closest;
+        Debug.Log($"{name} não encontrou mais {targetResource.resourceType}. Ficando em Idle.");
+        currentState = GatherState.Idle;
     }
 
-    public void StartGathering(ResourceNode resource, Transform townCenterTransform)
-    {
-        targetResource = resource;
-        townCenter = townCenterTransform;
-        movement.SetDestination(resource.transform.position);
-        currentState = State.MovingToResource;
-
-        Debug.Log($"{name} recebeu ordem para recolher: {resource.name} ({resource.type})");
-        Debug.Log($"{name} começou a recolher {resource.type} de {resource.name}");
-    }
 }
