@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class ClickToMove : MonoBehaviour
@@ -18,7 +19,6 @@ public class ClickToMove : MonoBehaviour
         {
             Vector2 mousePosition = Input.mousePosition;
             Vector2 worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-
             Debug.Log("Botão direito clicado na posição do rato: " + mousePosition + " | Posição no mundo: " + worldPosition);
 
             Collider2D[] hits = Physics2D.OverlapPointAll(worldPosition);
@@ -27,27 +27,30 @@ public class ClickToMove : MonoBehaviour
             foreach (var hitCollider in hits)
             {
                 Debug.Log("Verificando colisão com: " + hitCollider.name);
+
                 ResourceNode resource = hitCollider.GetComponent<ResourceNode>();
                 if (resource != null)
                 {
                     Debug.Log("Clicou num recurso: " + resource.name);
+
                     foreach (var unit in SelectionManager.Instance.GetSelectedUnits())
                     {
                         VillagerGathering gatherer = unit.GetComponent<VillagerGathering>();
                         if (gatherer != null)
                         {
                             GameObject depositBuilding = GameObject.FindWithTag("Deposit");
-                            Transform depositPoint = depositBuilding?.transform.Find("DepositPoint");
-                            Transform targetDeposit = depositPoint != null ? depositPoint : depositBuilding?.transform;
 
-                            if (targetDeposit != null)
+                            Transform depositPoint = depositBuilding?.transform.Find("DepositPoint");
+                            if (depositPoint == null)
                             {
-                                Debug.Log("A iniciar recolha no ponto: " + targetDeposit.name);
-                                gatherer.StartGathering(resource, targetDeposit);
+                                Debug.LogWarning("DepositPoint não encontrado no edifício com tag 'Deposit'");
+                                depositPoint = depositBuilding?.transform;
                             }
-                            else
+
+                            if (depositPoint != null)
                             {
-                                Debug.LogWarning("Nenhum edifício de depósito válido encontrado!");
+                                Debug.Log("A iniciar recolha no ponto: " + depositPoint.name);
+                                gatherer.StartGathering(resource, depositPoint);
                             }
                         }
                     }
@@ -58,7 +61,6 @@ public class ClickToMove : MonoBehaviour
             }
 
             Debug.Log("Nenhum recurso detetado. A mover unidade para " + worldPosition);
-
             foreach (var unit in SelectionManager.Instance.GetSelectedUnits())
             {
                 VillagerGathering gatherer = unit.GetComponent<VillagerGathering>();
