@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 8725409903619051170}
   m_Layer: 3
   m_Name: Villager_01
-  m_TagString: Unit
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

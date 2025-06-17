@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Villager
   m_EditorClassIdentifier: 
   unitName: "Alde\xE3o"
-  maxHealth: 100
-  attackDamage: 10
+  maxHealth: 20
+  attackDamage: 1
   attackRange: 1.5
   attackRate: 1
   detectionRange: 3

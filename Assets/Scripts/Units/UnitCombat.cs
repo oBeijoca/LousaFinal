@@ -24,7 +24,12 @@ public class UnitCombat : MonoBehaviour
         if (target == null || !isAttacking) return;
 
         float distance = Vector2.Distance(transform.position, target.transform.position);
-        if (distance > unitData.attackRange) return;
+
+        if (distance > unitData.attackRange)
+        {
+            movement.SetTargetPosition(target.transform.position);
+            return;
+        }
 
         if (!movement.ReachedDestination())
         {
@@ -42,10 +47,13 @@ public class UnitCombat : MonoBehaviour
 
     public void SetTarget(Health newTarget)
     {
-        if (newTarget == selfHealth) return;
+        if (newTarget == selfHealth || newTarget == null || newTarget.CurrentHealth <= 0) return;
+
         target = newTarget;
         isAttacking = true;
+
         Debug.Log($"{gameObject.name} definiu novo alvo: {newTarget.gameObject.name}");
+        movement.SetTargetPosition(newTarget.transform.position);
     }
 
     public void StopAttack()
@@ -65,21 +73,23 @@ public class UnitCombat : MonoBehaviour
         if (target.CurrentHealth <= 0)
         {
             Debug.Log($"{target.gameObject.name} morreu.");
-            FindNewTargetNearby();
+            Invoke(nameof(FindNewTargetNearby), 0.1f); // pequeno delay
         }
     }
 
     void FindNewTargetNearby()
     {
-        Health[] all = FindObjectsByType<Health>(FindObjectsSortMode.None);
+        Health[] allHealths = FindObjectsByType<Health>(FindObjectsSortMode.None);
 
-        var enemiesInRange = all
-            .Where(h => h != null && h != selfHealth)
+        var enemiesInRange = allHealths
+            .Where(h => h != null && h != selfHealth && h.CurrentHealth > 0)
             .Where(h => h.GetComponent<UnitCombat>() != null)
             .Where(h => Vector2.Distance(transform.position, h.transform.position) <= retargetRange)
-            .ToArray();
+            .Where(h => !h.CompareTag(gameObject.tag))
+            .OrderBy(h => Vector2.Distance(transform.position, h.transform.position))
+            .ToList();
 
-        if (enemiesInRange.Length > 0)
+        if (enemiesInRange.Count > 0)
         {
             Debug.Log($"{gameObject.name} encontrou novo inimigo: {enemiesInRange[0].gameObject.name}");
             SetTarget(enemiesInRange[0]);
@@ -93,7 +103,7 @@ public class UnitCombat : MonoBehaviour
 
     public void OnAttackedBy(Health attacker)
     {
-        if (!isAttacking && attacker != null && attacker != selfHealth)
+        if (!isAttacking && attacker != null && attacker != selfHealth && !attacker.CompareTag(gameObject.tag))
         {
             Debug.Log($"{gameObject.name} foi atacado por {attacker.gameObject.name} e vai retaliar.");
             SetTarget(attacker);
