@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitData: {fileID: 11400000, guid: 7a613f50f9908064caf2671e24c4f541, type: 2}
-  retargetRange: 5
+  retargetRange: 20
 --- !u!1 &9156004285052423928
 GameObject:
   m_ObjectHideFlags: 0
