@@ -32,8 +32,7 @@ public class UnitAnimationController : MonoBehaviour
         if (isMoving)
         {
             Vector2 dir = (movement.GetTargetPosition() - (Vector2)transform.position).normalized;
-            SetDirection(dir);
-            PlayWalk();
+            PlayWalk(dir);
         }
         else
         {
@@ -78,13 +77,20 @@ public class UnitAnimationController : MonoBehaviour
         PlayAnimation("Idle");
     }
 
-    public void PlayWalk()
+    public void PlayWalk(Vector2? directionOverride = null)
     {
-        if (currentState != UnitState.Walk)
+        if (directionOverride.HasValue)
         {
-            currentState = UnitState.Walk;
-            PlayAnimation("Walk" + lastDirection);
+            SetDirection(directionOverride.Value);
         }
+        else
+        {
+            Vector2 dir = (movement.GetTargetPosition() - (Vector2)transform.position).normalized;
+            SetDirection(dir);
+        }
+
+        currentState = UnitState.Walk;
+        PlayAnimation("Walk" + lastDirection);
     }
 
     public void PlayAttack(Vector2? targetDirection = null)
