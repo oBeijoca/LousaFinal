@@ -57,9 +57,20 @@ public class SelectionManager : MonoBehaviour
         {
             selectedObjects.Add(unit);
             unit.SetSelected(true);
+
+            var health = unit.GetComponent<Health>();
+            if (health != null && health.unitData != null && health.unitData.unitType == UnitData.UnitType.Villager)
+            {
+                UnitUI.Instance?.Show();
+                BuildingUI.Instance?.Hide();
+            }
+            else
+            {
+                UnitUI.Instance?.Hide();
+                BuildingUI.Instance?.Hide();
+            }
         }
     }
-
 
     public void AddToSelection(SelectableUnit unit)
     {
@@ -76,8 +87,8 @@ public class SelectionManager : MonoBehaviour
 
         selectedObjects.Clear();
 
-        if (BuildingUI.Instance != null)
-            BuildingUI.Instance.Hide();
+        UnitUI.Instance?.Hide();
+        BuildingUI.Instance?.Hide();
     }
 
     public void DeselectAllPublic()

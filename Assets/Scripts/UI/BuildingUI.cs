@@ -21,7 +21,6 @@ public class BuildingUI : MonoBehaviour
 
     public void Show(Building building)
     {
-        gameObject.SetActive(true);
         actionPanel.SetActive(true);
         activeBuilding = building;
     }

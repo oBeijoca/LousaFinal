@@ -496,6 +496,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitData: {fileID: 11400000, guid: 7a613f50f9908064caf2671e24c4f541, type: 2}
   healthFill: {fileID: 5376778546228361033}
+  damageClip: {fileID: 0}
+  deathClip: {fileID: 0}
+  attackClip: {fileID: 0}
 --- !u!114 &8725409903619051170
 MonoBehaviour:
   m_ObjectHideFlags: 0
