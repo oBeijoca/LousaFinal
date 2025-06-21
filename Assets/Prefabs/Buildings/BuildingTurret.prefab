@@ -189,8 +189,9 @@ GameObject:
   - component: {fileID: 5190740368352190458}
   - component: {fileID: 5404120066208879520}
   - component: {fileID: 7227923484412013345}
+  - component: {fileID: 1988445545944395550}
   m_Layer: 0
-  m_Name: Building
+  m_Name: BuildingTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,6 +319,23 @@ PolygonCollider2D:
       - {x: 0.21, y: -0.195}
       - {x: 0.21, y: 0.195}
   m_UseDelaunayMesh: 0
+--- !u!114 &1988445545944395550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896181677677756638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3529a8b7ff5b1e04eb671dd9c714d116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalBuildingPrefab: {fileID: 665423498232586176, guid: 4a8f8654aa81ac14086bcf78bf780c0d, type: 3}
+  buildTime: 5
+  progressFill: {fileID: 2253419589802303659}
+  buildLoopSound: {fileID: 0}
+  buildCompleteSound: {fileID: 0}
 --- !u!1 &7604413245951695543
 GameObject:
   m_ObjectHideFlags: 0
