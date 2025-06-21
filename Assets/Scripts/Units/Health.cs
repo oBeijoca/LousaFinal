@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
@@ -51,7 +51,21 @@ public class Health : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{gameObject.name} morreu.");
+
+        GetComponent<UnitMovement>()?.Stop();
+
+        var anim = GetComponent<UnitAnimationController>();
+        if (anim != null)
+        {
+            anim.CancelInvoke();
+            anim.PlayDeath();
+            Destroy(gameObject, 1f); // aguarda animação de morte
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         OnDeath?.Invoke();
-        Destroy(gameObject);
     }
 }

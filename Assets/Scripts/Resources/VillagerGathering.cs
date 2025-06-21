@@ -28,11 +28,14 @@ public class VillagerGathering : MonoBehaviour
             {
                 Debug.Log($"{name} recurso esgotado.");
                 currentState = State.Idle;
+                GetComponent<UnitAnimationController>()?.ResetToIdle();
                 return;
             }
 
             if (Vector3.Distance(transform.position, currentResource.transform.position) > 0.2f)
                 return;
+
+            GetComponent<UnitAnimationController>()?.PlayGatherAnimation(resourceType.ToString());
 
             gatherTimer += Time.deltaTime;
             if (gatherTimer >= gatherInterval)
@@ -47,6 +50,7 @@ public class VillagerGathering : MonoBehaviour
                     Debug.Log($"{name} inventário cheio. A ir ao depósito.");
                     movement.SetTargetPosition(depositTarget.position);
                     currentState = State.Returning;
+                    GetComponent<UnitAnimationController>()?.ResetToIdle();
                 }
             }
         }
@@ -56,6 +60,7 @@ public class VillagerGathering : MonoBehaviour
             {
                 Debug.Log($"{name} chegou ao depósito.");
                 currentState = State.Depositing;
+                GetComponent<UnitAnimationController>()?.ResetToIdle();
             }
         }
         else if (currentState == State.Depositing)
@@ -73,6 +78,7 @@ public class VillagerGathering : MonoBehaviour
             else
             {
                 currentState = State.Idle;
+                GetComponent<UnitAnimationController>()?.ResetToIdle();
             }
         }
     }
@@ -95,6 +101,7 @@ public class VillagerGathering : MonoBehaviour
             Debug.Log($"{name} parou de recolher.");
             currentResource = null;
             currentState = State.Idle;
+            GetComponent<UnitAnimationController>()?.ResetToIdle();
         }
     }
 
@@ -105,6 +112,7 @@ public class VillagerGathering : MonoBehaviour
             Debug.Log($"{name} chegou ao recurso ({currentResource.name}), a recolher...");
             currentState = State.Gathering;
             gatherTimer = 0f;
+            GetComponent<UnitAnimationController>()?.PlayGatherAnimation(resourceType.ToString());
         }
     }
 }

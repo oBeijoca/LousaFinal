@@ -67,13 +67,16 @@ public class UnitCombat : MonoBehaviour
     {
         if (target == null || target == selfHealth) return;
 
+        // ➕ Toca a animação de ataque
+        GetComponent<UnitAnimationController>()?.PlayAttack();
+
         Debug.Log($"{gameObject.name} está a atacar {target.gameObject.name} com {unitData.attackDamage} de dano");
         target.TakeDamage(unitData.attackDamage, selfHealth);
 
         if (target.CurrentHealth <= 0)
         {
             Debug.Log($"{target.gameObject.name} morreu.");
-            Invoke(nameof(FindNewTargetNearby), 0.1f); // pequeno delay
+            Invoke(nameof(FindNewTargetNearby), 0.1f);
         }
     }
 
