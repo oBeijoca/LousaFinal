@@ -188,4 +188,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Campo de Treino
   unitToSpawn: {fileID: 0}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 7360722225527872009}

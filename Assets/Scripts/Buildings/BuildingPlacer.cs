@@ -44,14 +44,27 @@ public class BuildingPlacer : MonoBehaviour
     void PlaceBuilding(Vector2 position)
     {
         Destroy(ghostObject);
-        GameObject final = Instantiate(buildingPrefab, position, Quaternion.identity);
-        // Aqui podíamos instanciar um ConstructionSite temporário no lugar do final
-        Destroy(this.gameObject); // remove o placer
+        CursorManager.Instance.SetBuildMode(false);
+
+        GameObject site = Instantiate(buildingPrefab, position, Quaternion.identity);
+
+        // Enviar o aldeão para o local
+        var selectedUnits = SelectionManager.Instance.GetSelectedUnits();
+        if (selectedUnits.Count > 0)
+        {
+            var villager = selectedUnits[0];
+            var movement = villager.GetComponent<UnitMovement>();
+            if (movement != null)
+                movement.SetTargetPosition(position);
+        }
+
+        Destroy(gameObject); // remove o placer
     }
 
     void CancelPlacement()
     {
         Destroy(ghostObject);
-        Destroy(this.gameObject);
+        CursorManager.Instance.SetBuildMode(false);
+        Destroy(gameObject);
     }
 }

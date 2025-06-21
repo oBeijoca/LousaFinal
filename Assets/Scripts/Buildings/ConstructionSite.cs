@@ -6,9 +6,20 @@ public class ConstructionSite : MonoBehaviour
     public GameObject finalBuildingPrefab;
     public float buildTime = 5f;
     public Transform progressFill;
+    public AudioClip buildLoopSound;
+    public AudioClip buildCompleteSound;
 
     private float currentProgress = 0f;
     private readonly HashSet<GameObject> builders = new();
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.loop = true;
+    }
 
     void Update()
     {
@@ -19,13 +30,26 @@ public class ConstructionSite : MonoBehaviour
             if (progressFill != null)
                 progressFill.localScale = new Vector3(t, 1, 1);
 
+            if (!audioSource.isPlaying && buildLoopSound != null)
+            {
+                audioSource.clip = buildLoopSound;
+                audioSource.Play();
+            }
+
             if (currentProgress >= buildTime)
                 FinishConstruction();
+        }
+        else if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
         }
     }
 
     void FinishConstruction()
     {
+        if (buildCompleteSound != null)
+            AudioSource.PlayClipAtPoint(buildCompleteSound, transform.position);
+
         Instantiate(finalBuildingPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
@@ -33,11 +57,15 @@ public class ConstructionSite : MonoBehaviour
     public void AddBuilder(GameObject builder)
     {
         builders.Add(builder);
+        var anim = builder.GetComponent<UnitAnimationController>();
+        anim?.PlayBuild();
     }
 
     public void RemoveBuilder(GameObject builder)
     {
         builders.Remove(builder);
+        var anim = builder.GetComponent<UnitAnimationController>();
+        anim?.ResetToIdle();
     }
 
     void OnTriggerEnter2D(Collider2D other)
