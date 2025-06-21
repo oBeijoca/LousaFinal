@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ClickToMove : MonoBehaviour
@@ -75,23 +76,39 @@ public class ClickToMove : MonoBehaviour
                 }
             }
 
-            // === MOVIMENTO NORMAL ===
-            Debug.Log("Nenhum recurso detetado. A mover unidade para " + worldPosition);
-            foreach (var unit in SelectionManager.Instance.GetSelectedUnits())
+            // === MOVIMENTO NORMAL COM AJUSTE ===
+            Debug.Log("Nenhum recurso detetado. A mover unidades para " + worldPosition);
+            List<SelectableUnit> selectedUnits = SelectionManager.Instance.GetSelectedUnits();
+
+            int count = selectedUnits.Count;
+
+            if (count == 1)
             {
-                VillagerGathering gatherer = unit.GetComponent<VillagerGathering>();
-                if (gatherer != null) gatherer.StopGathering();
+                var unit = selectedUnits[0];
+                unit.GetComponent<VillagerGathering>()?.StopGathering();
+                unit.GetComponent<UnitCombat>()?.StopAttack();
+                unit.GetComponent<UnitMovement>()?.SetTargetPosition(worldPosition);
+            }
+            else
+            {
+                float radius = 0.1f + 0.01f * count; // raio mínimo
+                float angleStep = 360f / count;
+                float angle = 0f;
 
-                UnitCombat combat = unit.GetComponent<UnitCombat>();
-                if (combat != null) combat.StopAttack();
-
-                UnitMovement movement = unit.GetComponent<UnitMovement>();
-                if (movement != null)
+                foreach (var unit in selectedUnits)
                 {
-                    Debug.Log("A mover unidade: " + unit.name + " para " + worldPosition);
-                    movement.SetTargetPosition(worldPosition);
+                    float rad = angle * Mathf.Deg2Rad;
+                    Vector2 offset = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
+                    Vector2 finalTarget = worldPosition + offset;
+
+                    unit.GetComponent<VillagerGathering>()?.StopGathering();
+                    unit.GetComponent<UnitCombat>()?.StopAttack();
+                    unit.GetComponent<UnitMovement>()?.SetTargetPosition(finalTarget);
+
+                    angle += angleStep;
                 }
             }
+
 
             ShowMarker(worldPosition);
         }
