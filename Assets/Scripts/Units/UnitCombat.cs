@@ -26,7 +26,7 @@ public class UnitCombat : MonoBehaviour
 
     void Update()
     {
-        if (!isAttacking || target == null || target.CurrentHealth <= 0)
+        if (!isAttacking || target == null || target.IsDead || selfHealth.IsDead)
         {
             StopAttack();
             return;
@@ -61,7 +61,7 @@ public class UnitCombat : MonoBehaviour
 
     void AttackTarget()
     {
-        if (target == null || target.CurrentHealth <= 0) return;
+        if (target == null || target.IsDead || selfHealth.IsDead) return;
 
         target.TakeDamage(unitData.attackDamage, selfHealth);
         Debug.Log($"{gameObject.name} atacou {target.gameObject.name} causando {unitData.attackDamage} dano");
@@ -69,7 +69,7 @@ public class UnitCombat : MonoBehaviour
         Vector2 delta = target.transform.position - transform.position;
         animController?.PlayAttack(delta);
 
-        if (target.CurrentHealth <= 0)
+        if (target.IsDead)
         {
             StopAttack();
             Invoke(nameof(FindNewTargetNearby), 0.2f);
@@ -78,7 +78,7 @@ public class UnitCombat : MonoBehaviour
 
     public void SetTarget(Health newTarget)
     {
-        if (newTarget == null || newTarget == selfHealth || newTarget.CurrentHealth <= 0) return;
+        if (newTarget == null || newTarget == selfHealth || newTarget.IsDead || selfHealth.IsDead) return;
 
         target = newTarget;
         isAttacking = true;
@@ -101,9 +101,11 @@ public class UnitCombat : MonoBehaviour
 
     void FindNewTargetNearby()
     {
+        if (selfHealth.IsDead) return;
+
         var allHealth = FindObjectsByType<Health>(FindObjectsSortMode.None);
         var enemies = allHealth
-            .Where(h => h != selfHealth && h.CurrentHealth > 0)
+            .Where(h => h != selfHealth && !h.IsDead && h.CurrentHealth > 0)
             .Where(h => !h.CompareTag(gameObject.tag))
             .Where(h => Vector2.Distance(transform.position, h.transform.position) <= retargetRange)
             .OrderBy(h => Vector2.Distance(transform.position, h.transform.position))
@@ -117,7 +119,7 @@ public class UnitCombat : MonoBehaviour
 
     public void OnAttackedBy(Health attacker)
     {
-        if (!isAttacking && attacker != null && attacker != selfHealth && !attacker.CompareTag(gameObject.tag))
+        if (!isAttacking && attacker != null && !attacker.IsDead && attacker != selfHealth && !attacker.CompareTag(gameObject.tag))
         {
             SetTarget(attacker);
         }

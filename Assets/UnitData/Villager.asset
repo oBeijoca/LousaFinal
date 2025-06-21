@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: "Alde\xE3o"
   maxHealth: 20
   attackDamage: 5
-  attackRange: 1.5
+  attackRange: 0.2
   attackRate: 1
   detectionRange: 3
   moveSpeed: 2.5
