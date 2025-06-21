@@ -3,6 +3,8 @@ using UnityEngine.EventSystems;
 
 public class CursorManager : MonoBehaviour
 {
+    public static CursorManager Instance { get; private set; }
+
     public Texture2D defaultCursor;
     public Texture2D attackCursor;
     public Texture2D hoverCursor;
@@ -16,6 +18,16 @@ public class CursorManager : MonoBehaviour
     public bool buildMode = false;
 
     private Texture2D currentCursor;
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     void Update()
     {
