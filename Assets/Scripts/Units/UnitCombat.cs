@@ -33,7 +33,6 @@ public class UnitCombat : MonoBehaviour
 
         if (!movement.ReachedDestination())
         {
-            Debug.Log($"{gameObject.name}: Ainda a mover-se. Não ataca.");
             return;
         }
 

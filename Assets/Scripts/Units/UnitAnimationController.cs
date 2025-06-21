@@ -5,36 +5,35 @@ public class UnitAnimationController : MonoBehaviour
 {
     private Animator anim;
     private Vector3 lastPosition;
-    private string lastDirection = "Down";
+    private Direction lastDirection = Direction.Down;
+    private string currentAnimation = "";
 
-    private enum State { Idle, Walk, Attack, Gather, Death }
-    private State currentState = State.Idle;
+    private enum UnitState { Idle, Walk, Attack, Gather, Build, Death }
+    private enum Direction { Up, Down, Left, Right }
+
+    private UnitState currentState = UnitState.Idle;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         lastPosition = transform.position;
-        Debug.Log($"[AnimController] Inicializado com direção padrão: {lastDirection}");
     }
 
     void Update()
     {
-        if (currentState != State.Idle && currentState != State.Walk)
-            return; // ignora se estiver a atacar, recolher ou morrer
+        if (currentState == UnitState.Attack || currentState == UnitState.Gather || currentState == UnitState.Death || currentState == UnitState.Build)
+            return;
 
-        UnitMovement movement = GetComponent<UnitMovement>();
-        bool isMoving = movement != null && !movement.ReachedDestination();
+        Vector3 delta = transform.position - lastPosition;
+        bool isMoving = delta.sqrMagnitude > 0.0001f;
 
         if (isMoving)
         {
-            Vector3 delta = transform.position - lastPosition;
-            Debug.Log("[AnimController] Movimento ativo: " + delta);
             SetDirection(delta);
             PlayWalk();
         }
         else
         {
-            Debug.Log("[AnimController] Parado. A tocar idle.");
             PlayIdle();
         }
 
@@ -43,79 +42,93 @@ public class UnitAnimationController : MonoBehaviour
 
     public void SetDirection(Vector2 direction)
     {
+        Direction newDirection;
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-        {
-            lastDirection = direction.x > 0 ? "Right" : "Left";
-        }
+            newDirection = direction.x > 0 ? Direction.Right : Direction.Left;
         else
+            newDirection = direction.y > 0 ? Direction.Up : Direction.Down;
+
+        if (newDirection != lastDirection)
         {
-            lastDirection = direction.y > 0 ? "Up" : "Down";
+            lastDirection = newDirection;
         }
-        Debug.Log("[AnimController] Direção definida para: " + lastDirection);
     }
 
-    public void PlayWalk()
+    private void PlayAnimation(string animName)
     {
-        if (currentState == State.Walk) return;
-        currentState = State.Walk;
-        string state = "Walk" + lastDirection;
-        Debug.Log("[AnimController] A tocar animação: " + state);
-        anim.Play(state, 0);
+        if (currentAnimation == animName) return;
+        currentAnimation = animName;
+        anim.Play(animName);
     }
 
     public void PlayIdle()
     {
-        if (currentState == State.Idle) return;
-        currentState = State.Idle;
-        Debug.Log("[AnimController] A tocar animação: Idle");
-        anim.Play("Idle", 0);
+        if (currentState != UnitState.Idle)
+        {
+            currentState = UnitState.Idle;
+            PlayAnimation("Idle");
+        }
     }
 
-    public void PlayAttack()
+    public void PlayWalk()
     {
-        currentState = State.Attack;
-        string state = "Atk" + lastDirection;
-        Debug.Log("[AnimController] A tocar animação: " + state);
-        anim.Play(state, 0);
+        if (currentState != UnitState.Walk)
+        {
+            currentState = UnitState.Walk;
+            PlayAnimation("Walk" + lastDirection);
+        }
+    }
+
+    public void PlayAttack(Vector2? targetDirection = null)
+    {
+        if (targetDirection.HasValue)
+        {
+            SetDirection(targetDirection.Value);
+        }
+
+        currentState = UnitState.Attack;
+        currentAnimation = ""; // força atualização
+        PlayAnimation("Atk" + lastDirection);
         Invoke(nameof(ResetToIdle), 0.5f);
     }
 
     public void PlayDeath()
     {
-        currentState = State.Death;
-        Debug.Log("[AnimController] A tocar animação: Death");
-        anim.Play("Death", 0);
+        currentState = UnitState.Death;
+        currentAnimation = ""; // força atualização
+        PlayAnimation("Death");
     }
 
     public void PlayGatherAnimation(string resourceType)
     {
-        currentState = State.Gather;
-        string state = "";
-        switch (resourceType)
+        currentState = UnitState.Gather;
+        string animName = resourceType switch
         {
-            case "Wood": state = "Chop"; break;
-            case "Food": state = "Gather"; break;
-            case "Gold": case "Stone": state = "Mine"; break;
-            default:
-                Debug.Log("[AnimController] Tipo de recurso desconhecido: " + resourceType);
-                PlayIdle();
-                return;
-        }
-        Debug.Log("[AnimController] A tocar animação de recolha: " + state);
-        anim.Play(state);
+            "Wood" => "Chop",
+            "Food" => "Gather",
+            "Gold" => "Mine",
+            "Stone" => "Mine",
+            _ => "Idle"
+        };
+
+        PlayAnimation(animName);
     }
 
-    public string GetLastDirection()
+    public void PlayBuild()
     {
-        return lastDirection;
+        currentState = UnitState.Build;
+        PlayAnimation("Build");
     }
 
     public void ResetToIdle()
     {
-        if (currentState != State.Death)
+        if (currentState != UnitState.Death)
         {
-            currentState = State.Idle;
+            currentState = UnitState.Idle;
             PlayIdle();
         }
     }
+
+    public string GetCurrentDirection() => lastDirection.ToString();
+    public string GetCurrentAnimation() => currentAnimation;
 }
