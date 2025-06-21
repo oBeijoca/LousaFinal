@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
 
-[RequireComponent(typeof(UnitMovement), typeof(Health))]
+[RequireComponent(typeof(UnitMovement), typeof(Health), typeof(Rigidbody2D))]
 public class UnitCombat : MonoBehaviour
 {
     public UnitData unitData;
@@ -10,101 +10,108 @@ public class UnitCombat : MonoBehaviour
     private Health target;
     private float attackCooldown;
     private bool isAttacking;
+
     private UnitMovement movement;
-    private Health selfHealth;
     private UnitAnimationController animController;
+    private Health selfHealth;
+    private Rigidbody2D rb;
 
     void Start()
     {
         movement = GetComponent<UnitMovement>();
-        selfHealth = GetComponent<Health>();
         animController = GetComponent<UnitAnimationController>();
+        selfHealth = GetComponent<Health>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        if (target == null || !isAttacking)
+        if (!isAttacking || target == null || target.CurrentHealth <= 0)
         {
-            Debug.Log("[Combat] Sem alvo ou não está a atacar. A forçar Idle se necessário.");
-            animController?.ResetToIdle();
+            StopAttack();
             return;
         }
 
         float distance = Vector2.Distance(transform.position, target.transform.position);
 
-        if (distance > unitData.attackRange)
+        if (distance > unitData.attackRange * 0.95f)
         {
-            movement.SetTargetPosition(target.transform.position);
-            return;
+            movement.SetTargetPosition(GetAttackPosition(target.transform.position));
+            animController?.PlayWalk();
         }
-
-        if (!movement.ReachedDestination()) return;
-
-        attackCooldown -= Time.deltaTime;
-        if (attackCooldown <= 0f)
+        else
         {
-            if (target.CurrentHealth > 0)
+            movement.Stop();
+            rb.linearVelocity = Vector2.zero;
+
+            attackCooldown -= Time.deltaTime;
+            if (attackCooldown <= 0f)
             {
-                int prevHealth = target.CurrentHealth;
-                target.TakeDamage(unitData.attackDamage, selfHealth);
-                Debug.Log($"{gameObject.name} está a atacar {target.gameObject.name} com {unitData.attackDamage} de dano");
-
-                if (target.CurrentHealth <= 0 && prevHealth > 0)
-                {
-                    Debug.Log($"{target.gameObject.name} morreu. A parar ataque e a procurar novo alvo.");
-                    StopAttack();
-                }
-                else
-                {
-                    Vector2 delta = target.transform.position - transform.position;
-                    animController?.PlayAttack(delta);
-                }
-
+                AttackTarget();
                 attackCooldown = 1f / unitData.attackRate;
             }
         }
     }
 
+    Vector2 GetAttackPosition(Vector2 targetPos)
+    {
+        Vector2 direction = (transform.position - (Vector3)targetPos).normalized;
+        return targetPos + direction * (unitData.attackRange * 0.9f);
+    }
+
+    void AttackTarget()
+    {
+        if (target == null || target.CurrentHealth <= 0) return;
+
+        target.TakeDamage(unitData.attackDamage, selfHealth);
+        Debug.Log($"{gameObject.name} atacou {target.gameObject.name} causando {unitData.attackDamage} dano");
+
+        Vector2 delta = target.transform.position - transform.position;
+        animController?.PlayAttack(delta);
+
+        if (target.CurrentHealth <= 0)
+        {
+            StopAttack();
+            Invoke(nameof(FindNewTargetNearby), 0.2f);
+        }
+    }
+
     public void SetTarget(Health newTarget)
     {
-        if (newTarget == selfHealth || newTarget == null || newTarget.CurrentHealth <= 0) return;
+        if (newTarget == null || newTarget == selfHealth || newTarget.CurrentHealth <= 0) return;
 
         target = newTarget;
         isAttacking = true;
+        attackCooldown = 0f;
 
-        Debug.Log($"{gameObject.name} definiu novo alvo: {newTarget.gameObject.name}");
-        movement.SetTargetPosition(newTarget.transform.position);
+        Debug.Log($"{gameObject.name} novo alvo: {target.gameObject.name}");
     }
 
     public void StopAttack()
     {
+        if (!isAttacking && target == null) return;
+
         Debug.Log($"{gameObject.name} parou de atacar.");
-        target = null;
         isAttacking = false;
+        target = null;
+
+        movement.Stop();
         animController?.ResetToIdle();
-        FindNewTargetNearby();
     }
 
     void FindNewTargetNearby()
     {
-        Health[] allHealths = FindObjectsByType<Health>(FindObjectsSortMode.None);
-
-        var enemiesInRange = allHealths
-            .Where(h => h != null && h != selfHealth && h.CurrentHealth > 0)
-            .Where(h => h.GetComponent<UnitCombat>() != null)
-            .Where(h => Vector2.Distance(transform.position, h.transform.position) <= retargetRange)
+        var allHealth = FindObjectsByType<Health>(FindObjectsSortMode.None);
+        var enemies = allHealth
+            .Where(h => h != selfHealth && h.CurrentHealth > 0)
             .Where(h => !h.CompareTag(gameObject.tag))
+            .Where(h => Vector2.Distance(transform.position, h.transform.position) <= retargetRange)
             .OrderBy(h => Vector2.Distance(transform.position, h.transform.position))
             .ToList();
 
-        if (enemiesInRange.Count > 0)
+        if (enemies.Count > 0)
         {
-            Debug.Log($"{gameObject.name} encontrou novo inimigo: {enemiesInRange[0].gameObject.name}");
-            SetTarget(enemiesInRange[0]);
-        }
-        else
-        {
-            Debug.Log($"{gameObject.name} não encontrou mais inimigos por perto. A parar ataque.");
+            SetTarget(enemies[0]);
         }
     }
 
@@ -112,7 +119,6 @@ public class UnitCombat : MonoBehaviour
     {
         if (!isAttacking && attacker != null && attacker != selfHealth && !attacker.CompareTag(gameObject.tag))
         {
-            Debug.Log($"{gameObject.name} foi atacado por {attacker.gameObject.name} e vai retaliar.");
             SetTarget(attacker);
         }
     }

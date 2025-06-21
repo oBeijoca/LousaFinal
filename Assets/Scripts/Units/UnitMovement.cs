@@ -47,4 +47,9 @@ public class UnitMovement : MonoBehaviour
         isMoving = true;
     }
 
+    public void ClearTarget()
+    {
+        isMoving = false;
+    }
+
 }
