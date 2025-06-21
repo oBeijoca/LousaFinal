@@ -74,11 +74,8 @@ public class UnitAnimationController : MonoBehaviour
 
     public void PlayIdle()
     {
-        if (currentState != UnitState.Idle)
-        {
-            currentState = UnitState.Idle;
-            PlayAnimation("Idle");
-        }
+        currentState = UnitState.Idle;
+        PlayAnimation("Idle");
     }
 
     public void PlayWalk()
@@ -136,6 +133,7 @@ public class UnitAnimationController : MonoBehaviour
         if (currentState != UnitState.Death)
         {
             currentState = UnitState.Idle;
+            currentAnimation = "";
             PlayIdle();
         }
     }

@@ -16,6 +16,8 @@ public class UnitCombat : MonoBehaviour
     private Health selfHealth;
     private Rigidbody2D rb;
 
+    private bool loggedIdleReset = false;
+
     void Start()
     {
         movement = GetComponent<UnitMovement>();
@@ -66,14 +68,23 @@ public class UnitCombat : MonoBehaviour
         target.TakeDamage(unitData.attackDamage, selfHealth);
         Debug.Log($"{gameObject.name} atacou {target.gameObject.name} causando {unitData.attackDamage} dano");
 
-        Vector2 delta = target.transform.position - transform.position;
-        animController?.PlayAttack(delta);
-
-        if (target.IsDead)
+        if (target == null || target.IsDead)
         {
             StopAttack();
+
+            if (!loggedIdleReset)
+            {
+                Debug.LogWarning($"[DEBUG] {gameObject.name} matou {target?.gameObject.name ?? "(null)"} e vai forçar Idle.");
+                loggedIdleReset = true;
+            }
+
+            animController?.ResetToIdle();
             Invoke(nameof(FindNewTargetNearby), 0.2f);
+            return;
         }
+
+        Vector2 delta = target.transform.position - transform.position;
+        animController?.PlayAttack(delta);
     }
 
     public void SetTarget(Health newTarget)
@@ -83,6 +94,7 @@ public class UnitCombat : MonoBehaviour
         target = newTarget;
         isAttacking = true;
         attackCooldown = 0f;
+        loggedIdleReset = false;
 
         Debug.Log($"{gameObject.name} novo alvo: {target.gameObject.name}");
     }
