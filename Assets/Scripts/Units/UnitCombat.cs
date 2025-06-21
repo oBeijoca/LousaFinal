@@ -12,16 +12,23 @@ public class UnitCombat : MonoBehaviour
     private bool isAttacking;
     private UnitMovement movement;
     private Health selfHealth;
+    private UnitAnimationController animController;
 
     void Start()
     {
         movement = GetComponent<UnitMovement>();
         selfHealth = GetComponent<Health>();
+        animController = GetComponent<UnitAnimationController>();
     }
 
     void Update()
     {
-        if (target == null || !isAttacking) return;
+        if (target == null || !isAttacking)
+        {
+            Debug.Log("[Combat] Sem alvo ou não está a atacar. A forçar Idle se necessário.");
+            animController?.ResetToIdle();
+            return;
+        }
 
         float distance = Vector2.Distance(transform.position, target.transform.position);
 
@@ -31,16 +38,30 @@ public class UnitCombat : MonoBehaviour
             return;
         }
 
-        if (!movement.ReachedDestination())
-        {
-            return;
-        }
+        if (!movement.ReachedDestination()) return;
 
         attackCooldown -= Time.deltaTime;
         if (attackCooldown <= 0f)
         {
-            Attack();
-            attackCooldown = 1f / unitData.attackRate;
+            if (target.CurrentHealth > 0)
+            {
+                int prevHealth = target.CurrentHealth;
+                target.TakeDamage(unitData.attackDamage, selfHealth);
+                Debug.Log($"{gameObject.name} está a atacar {target.gameObject.name} com {unitData.attackDamage} de dano");
+
+                if (target.CurrentHealth <= 0 && prevHealth > 0)
+                {
+                    Debug.Log($"{target.gameObject.name} morreu. A parar ataque e a procurar novo alvo.");
+                    StopAttack();
+                }
+                else
+                {
+                    Vector2 delta = target.transform.position - transform.position;
+                    animController?.PlayAttack(delta);
+                }
+
+                attackCooldown = 1f / unitData.attackRate;
+            }
         }
     }
 
@@ -60,23 +81,8 @@ public class UnitCombat : MonoBehaviour
         Debug.Log($"{gameObject.name} parou de atacar.");
         target = null;
         isAttacking = false;
-    }
-
-    void Attack()
-    {
-        if (target == null || target == selfHealth) return;
-
-        // ➕ Toca a animação de ataque
-        GetComponent<UnitAnimationController>()?.PlayAttack();
-
-        Debug.Log($"{gameObject.name} está a atacar {target.gameObject.name} com {unitData.attackDamage} de dano");
-        target.TakeDamage(unitData.attackDamage, selfHealth);
-
-        if (target.CurrentHealth <= 0)
-        {
-            Debug.Log($"{target.gameObject.name} morreu.");
-            Invoke(nameof(FindNewTargetNearby), 0.1f);
-        }
+        animController?.ResetToIdle();
+        FindNewTargetNearby();
     }
 
     void FindNewTargetNearby()
@@ -98,8 +104,7 @@ public class UnitCombat : MonoBehaviour
         }
         else
         {
-            Debug.Log($"{gameObject.name} não encontrou mais inimigos por perto.");
-            StopAttack();
+            Debug.Log($"{gameObject.name} não encontrou mais inimigos por perto. A parar ataque.");
         }
     }
 

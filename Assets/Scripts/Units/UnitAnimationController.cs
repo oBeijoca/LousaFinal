@@ -13,9 +13,12 @@ public class UnitAnimationController : MonoBehaviour
 
     private UnitState currentState = UnitState.Idle;
 
+    private UnitMovement movement;
+
     void Start()
     {
         anim = GetComponent<Animator>();
+        movement = GetComponent<UnitMovement>();
         lastPosition = transform.position;
     }
 
@@ -24,12 +27,12 @@ public class UnitAnimationController : MonoBehaviour
         if (currentState == UnitState.Attack || currentState == UnitState.Gather || currentState == UnitState.Death || currentState == UnitState.Build)
             return;
 
-        Vector3 delta = transform.position - lastPosition;
-        bool isMoving = delta.sqrMagnitude > 0.0001f;
+        bool isMoving = movement != null && !movement.ReachedDestination();
 
         if (isMoving)
         {
-            SetDirection(delta);
+            Vector2 dir = (movement.GetTargetPosition() - (Vector2)transform.position).normalized;
+            SetDirection(dir);
             PlayWalk();
         }
         else
@@ -57,7 +60,15 @@ public class UnitAnimationController : MonoBehaviour
     private void PlayAnimation(string animName)
     {
         if (currentAnimation == animName) return;
+
+        if (!anim.HasState(0, Animator.StringToHash(animName)))
+        {
+            Debug.LogError($"[AnimController] Estado '{animName}' não encontrado no Animator!");
+            return;
+        }
+
         currentAnimation = animName;
+        Debug.Log($"[AnimController] A tocar animação: {animName}");
         anim.Play(animName);
     }
 
