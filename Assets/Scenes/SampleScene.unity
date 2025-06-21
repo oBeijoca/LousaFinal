@@ -292,7 +292,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1667, y: 115.75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 31, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &252311984
 MonoBehaviour:
@@ -306,8 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3082820c6c21f1a40963d3f154d0ed51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constructionSitePrefab: {fileID: 5500619790589939823, guid: a5ccd1b78325f804d818f07c1994dfb7, type: 3}
-  buildingToConstruct: {fileID: 7160895912506530235, guid: 61b53ee80a368574caed6803a00b4f65, type: 3}
+  placerPrefab: {fileID: 5500619790589939823, guid: a5ccd1b78325f804d818f07c1994dfb7, type: 3}
 --- !u!114 &252311985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1619,7 +1618,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1749.03, y: 115.75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 31, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1107262933
 MonoBehaviour:
@@ -1633,8 +1632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3082820c6c21f1a40963d3f154d0ed51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constructionSitePrefab: {fileID: 5500619790589939823, guid: e262de66e268e9843ae082b0e155b841, type: 3}
-  buildingToConstruct: {fileID: 7239519631710388575, guid: cbcdf90989e83a14c9007adac8d22fbb, type: 3}
+  placerPrefab: {fileID: 5500619790589939823, guid: e262de66e268e9843ae082b0e155b841, type: 3}
 --- !u!114 &1107262934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2103,7 +2101,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1586, y: 115.75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 31, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1479602469
 MonoBehaviour:
@@ -2117,8 +2115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3082820c6c21f1a40963d3f154d0ed51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constructionSitePrefab: {fileID: 5500619790589939823, guid: 0a351455007071442b9d634fac75e32b, type: 3}
-  buildingToConstruct: {fileID: 665423498232586176, guid: 4a8f8654aa81ac14086bcf78bf780c0d, type: 3}
+  placerPrefab: {fileID: 5500619790589939823, guid: 0a351455007071442b9d634fac75e32b, type: 3}
 --- !u!114 &1479602470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,14 +2239,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.33, y: 2.33, z: 2.33}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 604706372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1749.03, y: 115.75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -1750, y: 115.75}
+  m_SizeDelta: {x: 31, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604595360
 MonoBehaviour:

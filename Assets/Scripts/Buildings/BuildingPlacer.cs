@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class BuildingPlacer : MonoBehaviour
 {
-    public GameObject buildingPrefab;
+    public GameObject buildingPrefab; // o edifício final que o jogador vê
+    public GameObject constructionSitePrefab; // o que é instanciado primeiro
     public Color validColor = Color.green;
     public Color invalidColor = Color.red;
 
@@ -46,7 +47,9 @@ public class BuildingPlacer : MonoBehaviour
         Destroy(ghostObject);
         CursorManager.Instance.SetBuildMode(false);
 
-        GameObject site = Instantiate(buildingPrefab, position, Quaternion.identity);
+        GameObject site = Instantiate(constructionSitePrefab, position, Quaternion.identity);
+        var siteScript = site.GetComponent<ConstructionSite>();
+        siteScript.finalBuildingPrefab = buildingPrefab;
 
         // Enviar o aldeão para o local
         var selectedUnits = SelectionManager.Instance.GetSelectedUnits();

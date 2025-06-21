@@ -12,6 +12,12 @@ public class BuildButton : MonoBehaviour
             return;
         }
 
+        if (FindAnyObjectByType<BuildingPlacer>() != null)
+        {
+            Debug.Log("Já há um BuildingPlacer ativo.");
+            return;
+        }
+
         Instantiate(placerPrefab);
         CursorManager.Instance.SetBuildMode(true); // Altera o cursor
     }

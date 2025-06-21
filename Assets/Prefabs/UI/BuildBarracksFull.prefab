@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1c3fb11c5fc994abff1f2b3ca31312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingPrefab: {fileID: 5896181677677756638, guid: 235b3ee031d6b464196ad0b7d0d4a7a8, type: 3}
+  buildingPrefab: {fileID: 7160895912506530235, guid: 61b53ee80a368574caed6803a00b4f65, type: 3}
+  constructionSitePrefab: {fileID: 5896181677677756638, guid: 235b3ee031d6b464196ad0b7d0d4a7a8, type: 3}
   validColor: {r: 0, g: 1, b: 0, a: 1}
   invalidColor: {r: 1, g: 0, b: 0, a: 1}
