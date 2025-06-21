@@ -36,9 +36,9 @@ public class UnitCombat : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, target.transform.position);
 
-        if (distance > unitData.attackRange * 0.95f)
+        if (distance > unitData.attackRange)
         {
-            movement.SetTargetPosition(GetAttackPosition(target.transform.position));
+            movement.SetTargetPosition(target.transform.position);
             animController?.PlayWalk();
         }
         else

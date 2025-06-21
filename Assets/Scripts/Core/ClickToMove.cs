@@ -109,7 +109,6 @@ public class ClickToMove : MonoBehaviour
                 }
             }
 
-
             ShowMarker(worldPosition);
         }
     }

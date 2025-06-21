@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: "Alde\xE3o"
   maxHealth: 20
-  attackDamage: 5
+  attackDamage: 1
   attackRange: 0.2
   attackRate: 1
   detectionRange: 3
