@@ -11,6 +11,7 @@ public class BuildButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public int foodCost;
 
     public string buildingName;
+    public TooltipUI tooltipUI; // Tooltip específico deste botão
 
     public void OnClick()
     {
@@ -41,12 +42,15 @@ public class BuildButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        string text = $"{buildingName}\nMadeira: {woodCost}\nPedra: {stoneCost}\nOuro: {goldCost}\nComida: {foodCost}";
-        TooltipUI.Instance?.Show(text);
+        if (tooltipUI != null)
+        {
+            string text = $"{buildingName}\nMadeira: {woodCost}\nPedra: {stoneCost}\nOuro: {goldCost}\nComida: {foodCost}";
+            tooltipUI.Show(text);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        TooltipUI.Instance?.Hide();
+        tooltipUI?.Hide();
     }
 }

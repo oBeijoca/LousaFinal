@@ -2,26 +2,15 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    public string buildingName = "Centro da Vila";
-    public GameObject unitToSpawn;
-    public Transform spawnPoint;
+    public string buildingName = "Edifício";
+    public GameObject actionPanel; // painel UI associado a este edifício
 
     public virtual void OnSelect()
     {
         Debug.Log("Selecionado: " + buildingName);
-        BuildingUI.Instance.Show(this);
-    }
-
-    public virtual void SpawnUnit()
-    {
-        if (unitToSpawn != null && spawnPoint != null)
+        if (actionPanel != null)
         {
-            Instantiate(unitToSpawn, spawnPoint.position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogWarning("unitToSpawn ou spawnPoint não atribuídos.");
+            BuildingUIManager.Instance.ShowPanel(actionPanel, this);
         }
     }
-
 }

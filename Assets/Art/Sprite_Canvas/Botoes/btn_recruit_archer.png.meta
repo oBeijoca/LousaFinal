@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 475e57c0530254b4395e9004db76be56
+guid: d02ccd242c8d1df4799f2b3e78983674
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6604432158967587760
-    second: btn_recruit_archer_0
+      213: 1073342071924645575
+    second: btn_recruit_archer 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,10 +126,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0b3ed6a8e08a7ab50800000000000000
-      internalID: 6604432158967587760
+      spriteID: 1b627f1a89da62e41ba5f34f176e324e
+      internalID: -379798751
       vertices: []
       indices: 
       edges: []
@@ -150,8 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94c9617300dbb4344abc67ec8bc13f04
-      internalID: 413896873
+      spriteID: 3ce93ff6aa650504bb44edc55ad921a4
+      internalID: -1021555825
       vertices: []
       indices: 
       edges: []
@@ -160,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cf6c049c78355914e80b02e464bfa950
+    spriteID: 8169eac811565bb4c9edd3ab298ebb23
     internalID: 0
     vertices: []
     indices: 
@@ -170,8 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      btn_recruit_archer_0: 6604432158967587760
-      btn_recruit_archer_1: 413896873
+      btn_recruit_archer_0: -379798751
+      btn_recruit_archer_1: -1021555825
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
