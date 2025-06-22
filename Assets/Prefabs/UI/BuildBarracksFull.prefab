@@ -48,3 +48,7 @@ MonoBehaviour:
   constructionSitePrefab: {fileID: 5896181677677756638, guid: 235b3ee031d6b464196ad0b7d0d4a7a8, type: 3}
   validColor: {r: 0, g: 1, b: 0, a: 1}
   invalidColor: {r: 1, g: 0, b: 0, a: 1}
+  woodCost: 100
+  stoneCost: 50
+  goldCost: 0
+  foodCost: 0

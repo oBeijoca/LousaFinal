@@ -7,6 +7,11 @@ public class BuildingPlacer : MonoBehaviour
     public Color validColor = Color.green;
     public Color invalidColor = Color.red;
 
+    public int woodCost;
+    public int stoneCost;
+    public int goldCost;
+    public int foodCost;
+
     private GameObject ghostObject;
     private SpriteRenderer ghostRenderer;
     private bool isValidPlacement = false;
@@ -33,13 +38,36 @@ public class BuildingPlacer : MonoBehaviour
         // Confirmar construção
         if (Input.GetMouseButtonDown(0) && isValidPlacement && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
-            PlaceBuilding(mouseWorldPos);
+            TryPlaceBuilding(mouseWorldPos);
         }
         // Cancelar com botão direito
         if (Input.GetMouseButtonDown(1))
         {
             CancelPlacement();
         }
+    }
+
+    void TryPlaceBuilding(Vector2 position)
+    {
+        var rm = ResourceManager.Instance;
+        bool hasResources = rm.GetResourceAmount(ResourceNode.ResourceType.Wood) >= woodCost &&
+                            rm.GetResourceAmount(ResourceNode.ResourceType.Stone) >= stoneCost &&
+                            rm.GetResourceAmount(ResourceNode.ResourceType.Gold) >= goldCost &&
+                            rm.GetResourceAmount(ResourceNode.ResourceType.Food) >= foodCost;
+
+        if (!hasResources)
+        {
+            Debug.Log("Recursos insuficientes no momento da colocação.");
+            return;
+        }
+
+        // Gasta os recursos agora
+        rm.SpendResource(ResourceNode.ResourceType.Wood, woodCost);
+        rm.SpendResource(ResourceNode.ResourceType.Stone, stoneCost);
+        rm.SpendResource(ResourceNode.ResourceType.Gold, goldCost);
+        rm.SpendResource(ResourceNode.ResourceType.Food, foodCost);
+
+        PlaceBuilding(position);
     }
 
     void PlaceBuilding(Vector2 position)
