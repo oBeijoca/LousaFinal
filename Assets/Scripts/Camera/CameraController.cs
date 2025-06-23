@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
 public class CameraController : MonoBehaviour
@@ -13,6 +14,9 @@ public class CameraController : MonoBehaviour
 
     public float minX = -1f, maxX = 21f, minY = -1f, maxY = 21f;
 
+    [Header("Tilemap Bounds")]
+    public Tilemap referenceTilemap;
+
     private bool edgeMovementEnabled = true;
     private Vector3 dragOrigin;
     private Camera cam;
@@ -24,19 +28,29 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+
+        if (referenceTilemap != null)
+        {
+            Bounds tileBounds = referenceTilemap.localBounds;
+
+            minX = tileBounds.min.x;
+            maxX = tileBounds.max.x;
+            minY = tileBounds.min.y;
+            maxY = tileBounds.max.y;
+
+            Debug.Log($"[CameraController] Limites carregados do tilemap: ({minX}, {maxX}), ({minY}, {maxY})");
+        }
     }
 
     void Update()
     {
         Vector3 pos = transform.position;
 
-        // Movimento com setas
         if (Input.GetKey(KeyCode.LeftArrow)) pos.x -= moveSpeed * Time.deltaTime;
         if (Input.GetKey(KeyCode.RightArrow)) pos.x += moveSpeed * Time.deltaTime;
         if (Input.GetKey(KeyCode.UpArrow)) pos.y += moveSpeed * Time.deltaTime;
         if (Input.GetKey(KeyCode.DownArrow)) pos.y -= moveSpeed * Time.deltaTime;
 
-        // Arrastar com botão do meio
         if (Input.GetMouseButtonDown(2))
             dragOrigin = Input.mousePosition;
 
@@ -48,7 +62,6 @@ public class CameraController : MonoBehaviour
             dragOrigin = Input.mousePosition;
         }
 
-        // Movimento pelas bordas (se ativado)
         if (edgeMovementEnabled)
         {
             Vector2 mouse = Input.mousePosition;
@@ -58,7 +71,6 @@ public class CameraController : MonoBehaviour
             if (mouse.y >= Screen.height - edgeSize) pos.y += edgeMoveSpeed * Time.deltaTime;
         }
 
-        // Zoom com scroll
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0f)
         {
@@ -66,25 +78,22 @@ public class CameraController : MonoBehaviour
             cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
         }
 
-        // Centrar na seleção com tecla F
         if (Input.GetKeyDown(KeyCode.F))
         {
             Vector3? center = GetSelectionCenter();
             if (center.HasValue)
             {
-                StopAllCoroutines(); // interrompe qualquer movimento anterior
+                StopAllCoroutines();
                 StartCoroutine(SmoothMove(center.Value));
             }
         }
 
-        // Ativar/desativar movimento pelas bordas (tecla -)
         if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus))
         {
             edgeMovementEnabled = !edgeMovementEnabled;
             Debug.Log("Movimento pelas bordas: " + (edgeMovementEnabled ? "ligado" : "desligado"));
         }
 
-        // Limitar aos limites do mapa
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
 
@@ -107,7 +116,7 @@ public class CameraController : MonoBehaviour
 
     System.Collections.IEnumerator SmoothMove(Vector3 target)
     {
-        target.z = transform.position.z; // manter a profundidade da câmara
+        target.z = transform.position.z;
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, 0.2f);

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b19598784c842247816980d1ced7205, type: 3}
-  m_Name: Villager
+  m_Name: TownCenterInimigo
   m_EditorClassIdentifier: 
-  unitName: Villager
-  maxHealth: 20
-  attackDamage: 1
-  attackRange: 0.1
-  attackRate: 1
-  detectionRange: 3
-  moveSpeed: 2.5
+  unitName: FINISH
+  maxHealth: 10
+  attackDamage: 0
+  attackRange: 0
+  attackRate: 0
+  detectionRange: 0
+  moveSpeed: 0
   unitType: 0

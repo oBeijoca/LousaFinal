@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: Spearman
   maxHealth: 50
   attackDamage: 5
-  attackRange: 0.35
+  attackRange: 0.2
   attackRate: 0.5
   detectionRange: 3
   moveSpeed: 2.5

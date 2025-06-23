@@ -7,5 +7,25 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Archer
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: f83896cee4f8b244c90fb6feb2c12064, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: fa11b4ca0c503c84aa8bfa0c71430009, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 120656b9162588246a295817efa7a89c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6f4bfb1d2c7cda64292da656e1b2d866, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cc6044a38ec7a4b4da6e93cabf65a2f4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 918e63b82b616e44ab1eb88ffe0b17fc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 762b4c0946130614d9690a0bfc77bd4c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: efb4856d51f7ed34da9202ad138c3200, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c7812f6f29617134c8f7f3783702a21f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ff412b2439b113548ab795f3db700688, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e267ec478e128ca4299cc937e98ce4fa, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9aeecd93515e346428e11f8c4377a034, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 707bf48ca17f15d4fb0f2e74706586e4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 500cb82022b0e99479b51d10117ff968, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 80bd447b02b810c48ab129bfe4dad598, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4fbf8ea355584f94c923c08f1eb5f523, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c520048d022f78644b7509adee78fa35, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f3d0bc9ae21f6cf4eb89f50303580e7d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 506820950676db54cb213f1aa71a41d4, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7cacb6be4949db446b05c6d934e1c5cd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9787acad6ed16484980faf63e81e905e, type: 2}

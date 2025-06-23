@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2624934032913812273}
   - component: {fileID: 4799093845615501424}
   - component: {fileID: -7107633449400119167}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

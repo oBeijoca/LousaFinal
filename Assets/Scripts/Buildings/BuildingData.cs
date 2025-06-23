@@ -4,7 +4,7 @@ public enum BuildingType
 {
     TownCenter,
     Barracks,
-    // outros tipos que quiseres
+    Caban,
 }
 
 [CreateAssetMenu(fileName = "New Building Data", menuName = "RTS/Building Data")]

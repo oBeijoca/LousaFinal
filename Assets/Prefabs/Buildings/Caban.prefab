@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 676314166153353124}
   - component: {fileID: 4975209676746364240}
   - component: {fileID: 1155815523894528511}
-  m_Layer: 0
+  - component: {fileID: -4343718471139444989}
+  m_Layer: 7
   m_Name: Caban
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,3 +144,16 @@ PolygonCollider2D:
       - {x: 0.14173669, y: 0.014507346}
       - {x: 0.014135785, y: 0.14607431}
   m_UseDelaunayMesh: 0
+--- !u!114 &-4343718471139444989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239519631710388575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906fa60288df2ab47845c2ac73729239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingData: {fileID: 11400000, guid: 4647174785f81d34c80cfd59dcd5898f, type: 2}

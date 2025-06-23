@@ -120,8 +120,8 @@ GameObject:
   - component: {fileID: 7660195781117681607}
   - component: {fileID: 4252344984789376700}
   - component: {fileID: 4739189186803686828}
-  - component: {fileID: 2260508737951553972}
   - component: {fileID: 1952914618638997097}
+  - component: {fileID: -2357663000989330996}
   m_Layer: 7
   m_Name: TownCenter
   m_TagString: Deposit
@@ -247,7 +247,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.48, y: 0.44}
   m_EdgeRadius: 0
---- !u!114 &2260508737951553972
+--- !u!114 &1952914618638997097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,11 +256,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7907662488866317531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5e9bf4d5699f5409c27ffbf0c67701, type: 3}
+  m_Script: {fileID: 11500000, guid: 906fa60288df2ab47845c2ac73729239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
---- !u!114 &1952914618638997097
+  buildingData: {fileID: 11400000, guid: bcfd668a77c159f499bccc2bd9d260f3, type: 2}
+--- !u!114 &-2357663000989330996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

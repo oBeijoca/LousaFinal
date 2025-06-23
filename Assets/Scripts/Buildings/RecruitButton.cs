@@ -95,6 +95,12 @@ public class RecruitButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             return;
         }
 
+        if (!PopulationManager.Instance.CanRecruit())
+        {
+            Debug.LogWarning("[RecruitButton] Limite de população atingido.");
+            return;
+        }
+
         Debug.Log("[RecruitButton] Iniciando treino da unidade: " + unitName);
         StartCoroutine(TrainUnit());
     }

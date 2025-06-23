@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: Warrior
   maxHealth: 100
   attackDamage: 6
-  attackRange: 0.25
+  attackRange: 0.1
   attackRate: 1
   detectionRange: 3
   moveSpeed: 1.5

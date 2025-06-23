@@ -34,11 +34,12 @@ public class UnitCombat : MonoBehaviour
             return;
         }
 
-        float distance = Vector2.Distance(transform.position, target.transform.position);
+        Vector2 closestPoint = target.GetComponent<Collider2D>()?.ClosestPoint(transform.position) ?? target.transform.position;
+        float distance = Vector2.Distance(transform.position, closestPoint);
 
         if (distance > unitData.attackRange)
         {
-            movement.SetTargetPosition(target.transform.position);
+            movement.SetTargetPosition(closestPoint);
             animController?.PlayWalk();
         }
         else
@@ -55,12 +56,6 @@ public class UnitCombat : MonoBehaviour
         }
     }
 
-    Vector2 GetAttackPosition(Vector2 targetPos)
-    {
-        Vector2 direction = (transform.position - (Vector3)targetPos).normalized;
-        return targetPos + direction * (unitData.attackRange * 0.9f);
-    }
-
     void AttackTarget()
     {
         if (target == null || target.IsDead || selfHealth.IsDead) return;
@@ -70,11 +65,12 @@ public class UnitCombat : MonoBehaviour
 
         if (target == null || target.IsDead)
         {
+            string killedName = target?.gameObject.name; // guardar antes que se perca
             StopAttack();
 
             if (!loggedIdleReset)
             {
-                Debug.LogWarning($"[DEBUG] {gameObject.name} matou {target?.gameObject.name ?? "(null)"} e vai forçar Idle.");
+                Debug.LogWarning($"[DEBUG] {gameObject.name} matou {killedName ?? "(null)"} e vai forçar Idle.");
                 loggedIdleReset = true;
             }
 
@@ -82,6 +78,7 @@ public class UnitCombat : MonoBehaviour
             Invoke(nameof(FindNewTargetNearby), 0.2f);
             return;
         }
+
 
         Vector2 delta = target.transform.position - transform.position;
         animController?.PlayAttack(delta);

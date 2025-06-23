@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -112,5 +113,6 @@ public class Health : MonoBehaviour
         }
 
         OnDeath?.Invoke();
+
     }
 }

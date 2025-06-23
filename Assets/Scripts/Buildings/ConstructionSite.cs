@@ -50,9 +50,22 @@ public class ConstructionSite : MonoBehaviour
         if (buildCompleteSound != null)
             AudioSource.PlayClipAtPoint(buildCompleteSound, transform.position);
 
-        Instantiate(finalBuildingPrefab, transform.position, Quaternion.identity);
+        GameObject building = Instantiate(finalBuildingPrefab, transform.position, Quaternion.identity);
+
+        // Aumentar população se for cabana
+        var buildingScript = building.GetComponent<Building>();
+        if (buildingScript != null && buildingScript.buildingData != null)
+        {
+            if (buildingScript.buildingData.buildingType == BuildingType.Caban)
+            {
+                PopulationManager.Instance.IncreasePopulationCap(5);
+                Debug.Log("[ConstructionSite] População máxima aumentada por construir uma cabana.");
+            }
+        }
+
         Destroy(gameObject);
     }
+
 
     public void AddBuilder(GameObject builder)
     {
