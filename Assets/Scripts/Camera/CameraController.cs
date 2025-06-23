@@ -1,21 +1,18 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
 public class CameraController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float dragSpeed = 2f;
-    public float edgeSize = 15f;
+    public float moveSpeed = 10f;
+    public float dragSpeed = 1f;
+    public float edgeSize = 20f;
     public float edgeMoveSpeed = 1.5f;
     public float zoomSpeed = 2f;
     public float minZoom = 0.5f;
     public float maxZoom = 1.5f;
 
-    public float minX = -1f, maxX = 21f, minY = -1f, maxY = 21f;
-
-    [Header("Tilemap Bounds")]
-    public Tilemap referenceTilemap;
+    [Header("Camera Movement Bounds")]
+    public float minX = -10f, maxX = 10f, minY = -10f, maxY = 10f;
 
     private bool edgeMovementEnabled = true;
     private Vector3 dragOrigin;
@@ -29,17 +26,21 @@ public class CameraController : MonoBehaviour
     {
         cam = Camera.main;
 
-        if (referenceTilemap != null)
-        {
-            Bounds tileBounds = referenceTilemap.localBounds;
+        float orthoSize = cam.orthographicSize;
+        float camHalfWidth = orthoSize * cam.aspect;
 
-            minX = tileBounds.min.x;
-            maxX = tileBounds.max.x;
-            minY = tileBounds.min.y;
-            maxY = tileBounds.max.y;
+        // Ajustar os limites com margem visual
+        minX += camHalfWidth;
+        maxX -= camHalfWidth;
+        minY += orthoSize;
+        maxY -= orthoSize;
 
-            Debug.Log($"[CameraController] Limites carregados do tilemap: ({minX}, {maxX}), ({minY}, {maxY})");
-        }
+
+        // Força a posição inicial da câmara dentro dos limites
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+        transform.position = pos;
     }
 
     void Update()
@@ -94,9 +95,9 @@ public class CameraController : MonoBehaviour
             Debug.Log("Movimento pelas bordas: " + (edgeMovementEnabled ? "ligado" : "desligado"));
         }
 
+        // Limita dentro dos limites definidos
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
-
         transform.position = pos;
     }
 
@@ -120,6 +121,12 @@ public class CameraController : MonoBehaviour
         while (Vector3.Distance(transform.position, target) > 0.01f)
         {
             transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, 0.2f);
+
+            // Clamp dentro da coroutine também
+            float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
+            float clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
+            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+
             yield return null;
         }
     }
