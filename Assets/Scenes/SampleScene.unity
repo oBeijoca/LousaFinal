@@ -101234,7 +101234,6 @@ MonoBehaviour:
   maxX: 4
   minY: -4.75
   maxY: 4
-  referenceTilemap: {fileID: 1547914479}
   selectionManager: {fileID: 689836972}
 --- !u!1001 &1812357216
 PrefabInstance:

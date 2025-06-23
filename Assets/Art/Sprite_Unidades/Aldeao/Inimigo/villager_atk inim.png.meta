@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: 8a6a174a1f41552439ad0d9d5b5e6e65
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6533383214053953209
+    second: villager_atk inim_0
+  - first:
+      213: -3942894122905876548
+    second: villager_atk inim_1
+  - first:
+      213: -2767391463247170344
+    second: villager_atk inim_2
+  - first:
+      213: -8658237190902213774
+    second: villager_atk inim_3
+  - first:
+      213: -4370623157034010469
+    second: villager_atk inim_4
+  - first:
+      213: 3029698177186588894
+    second: villager_atk inim_5
+  - first:
+      213: -7468807188512694105
+    second: villager_atk inim_6
+  - first:
+      213: -4818407257547072827
+    second: villager_atk inim_7
+  - first:
+      213: -8529476043258359823
+    second: villager_atk inim_8
+  - first:
+      213: 8107275997024867730
+    second: villager_atk inim_9
+  - first:
+      213: 4748852179535598863
+    second: villager_atk inim_10
+  - first:
+      213: 2624450346689315716
+    second: villager_atk inim_11
+  - first:
+      213: -5019921192471361861
+    second: villager_atk inim_12
+  - first:
+      213: 8929241614842628797
+    second: villager_atk inim_13
+  - first:
+      213: 1797305236841110429
+    second: villager_atk inim_14
+  - first:
+      213: -2235244538925104695
+    second: villager_atk inim_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: villager_atk inim_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 4
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74170d80592c455a0800000000000000
+      internalID: -6533383214053953209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 4
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb748318fa60849c0800000000000000
+      internalID: -3942894122905876548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_2
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 4
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d434be50204899d0800000000000000
+      internalID: -2767391463247170344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_3
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 3
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273923fe523c7d780800000000000000
+      internalID: -8658237190902213774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_4
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 4
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9834ed256d6853c0800000000000000
+      internalID: -4370623157034010469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_5
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 4
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed8eadba076ab0a20800000000000000
+      internalID: 3029698177186588894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_6
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 4
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a021d8fe67795890800000000000000
+      internalID: -7468807188512694105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_7
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 3
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca1eb6d024912db0800000000000000
+      internalID: -4818407257547072827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_8
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 4
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ff8161dab631a980800000000000000
+      internalID: -8529476043258359823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_9
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 4
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 295d7baa094d28070800000000000000
+      internalID: 8107275997024867730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_10
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 2
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f051f0495ef47e140800000000000000
+      internalID: 4748852179535598863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_11
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 4
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48341157fabeb6420800000000000000
+      internalID: 2624450346689315716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_12
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 4
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb60a4aa548a55ab0800000000000000
+      internalID: -5019921192471361861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_13
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 4
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dba845680f90beb70800000000000000
+      internalID: 8929241614842628797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_14
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 4
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9b1dd2279f41f810800000000000000
+      internalID: 1797305236841110429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_atk inim_15
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 4
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c1cc374fe0daf0e0800000000000000
+      internalID: -2235244538925104695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      villager_atk inim_0: -6533383214053953209
+      villager_atk inim_1: -3942894122905876548
+      villager_atk inim_10: 4748852179535598863
+      villager_atk inim_11: 2624450346689315716
+      villager_atk inim_12: -5019921192471361861
+      villager_atk inim_13: 8929241614842628797
+      villager_atk inim_14: 1797305236841110429
+      villager_atk inim_15: -2235244538925104695
+      villager_atk inim_2: -2767391463247170344
+      villager_atk inim_3: -8658237190902213774
+      villager_atk inim_4: -4370623157034010469
+      villager_atk inim_5: 3029698177186588894
+      villager_atk inim_6: -7468807188512694105
+      villager_atk inim_7: -4818407257547072827
+      villager_atk inim_8: -8529476043258359823
+      villager_atk inim_9: 8107275997024867730
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

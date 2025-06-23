@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Villager Inimigo
+  m_Controller: {fileID: 9100000, guid: f83896cee4f8b244c90fb6feb2c12064, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: fa11b4ca0c503c84aa8bfa0c71430009, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ebbb519d120944344af1b59d22cd3878, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6f4bfb1d2c7cda64292da656e1b2d866, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1de4f2ca9a001114c935f3147616b273, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 918e63b82b616e44ab1eb88ffe0b17fc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 90befe964047070459f8e8ad62fd21b1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: efb4856d51f7ed34da9202ad138c3200, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: af715b2e55e46dd409c4aa604fbb1918, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ff412b2439b113548ab795f3db700688, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8133a14ad5e76c142ac59f3ce2764e8a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9aeecd93515e346428e11f8c4377a034, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 40bc39b4c579d22479da944df59781f2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 500cb82022b0e99479b51d10117ff968, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4823e974186f09b4da4883361f55fee2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4fbf8ea355584f94c923c08f1eb5f523, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cdb0c26c3e671484eb4d1078c3802570, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f3d0bc9ae21f6cf4eb89f50303580e7d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 30dacf2011642e0489966ba76d062839, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7cacb6be4949db446b05c6d934e1c5cd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5de953c6f1a449742aba35d076297475, type: 2}

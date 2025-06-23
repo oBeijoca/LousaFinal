@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: eb8f6f9f32864534b8ffcd4ca52f1d80
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5967362644815853751
+    second: villager_idle inim_0
+  - first:
+      213: -6188006243884918748
+    second: villager_idle inim_1
+  - first:
+      213: 7067368918747564355
+    second: villager_idle inim_2
+  - first:
+      213: 8452618422047173515
+    second: villager_idle inim_3
+  - first:
+      213: 2350348524994572559
+    second: villager_idle inim_4
+  - first:
+      213: -760191366173533315
+    second: villager_idle inim_5
+  - first:
+      213: -1069243281373248394
+    second: villager_idle inim_6
+  - first:
+      213: -1453163518102853818
+    second: villager_idle inim_7
+  - first:
+      213: 5897939901917998050
+    second: villager_idle inim_8
+  - first:
+      213: -6765416881850634112
+    second: villager_idle inim_9
+  - first:
+      213: -3268393253438337107
+    second: villager_idle inim_10
+  - first:
+      213: 1163543252426639934
+    second: villager_idle inim_11
+  - first:
+      213: 5329163749918939368
+    second: villager_idle inim_12
+  - first:
+      213: 9184019694765154741
+    second: villager_idle inim_13
+  - first:
+      213: 3544985551180971984
+    second: villager_idle inim_14
+  - first:
+      213: -5359043607044663870
+    second: villager_idle inim_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: villager_idle inim_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 4
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b83f2285b450d250800000000000000
+      internalID: 5967362644815853751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 4
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428175d4b19cf1aa0800000000000000
+      internalID: -6188006243884918748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_2
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 4
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349c59a4696541260800000000000000
+      internalID: 7067368918747564355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_3
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 4
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8b6b04cbabbd4570800000000000000
+      internalID: 8452618422047173515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_4
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 4
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f013aa2e78d1e9020800000000000000
+      internalID: 2350348524994572559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_5
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 4
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b58e9eaf14375f0800000000000000
+      internalID: -760191366173533315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_6
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 4
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 674464396e84921f0800000000000000
+      internalID: -1069243281373248394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_7
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 4
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6472ceeba7355dbe0800000000000000
+      internalID: -1453163518102853818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_8
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 4
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebac689711b9d150800000000000000
+      internalID: 5897939901917998050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_9
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 4
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 080bcdfc0396c12a0800000000000000
+      internalID: -6765416881850634112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_10
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 4
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daf468617a554a2d0800000000000000
+      internalID: -3268393253438337107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_11
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 4
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3a41b16c6cb52010800000000000000
+      internalID: 1163543252426639934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_12
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 4
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e89ec7023ef4f940800000000000000
+      internalID: 5329163749918939368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_13
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 4
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b12bacd041347f70800000000000000
+      internalID: 9184019694765154741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_14
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 4
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dfb800a391523130800000000000000
+      internalID: 3544985551180971984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villager_idle inim_15
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 4
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c5564a9b3ad0a5b0800000000000000
+      internalID: -5359043607044663870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      villager_idle inim_0: 5967362644815853751
+      villager_idle inim_1: -6188006243884918748
+      villager_idle inim_10: -3268393253438337107
+      villager_idle inim_11: 1163543252426639934
+      villager_idle inim_12: 5329163749918939368
+      villager_idle inim_13: 9184019694765154741
+      villager_idle inim_14: 3544985551180971984
+      villager_idle inim_15: -5359043607044663870
+      villager_idle inim_2: 7067368918747564355
+      villager_idle inim_3: 8452618422047173515
+      villager_idle inim_4: 2350348524994572559
+      villager_idle inim_5: -760191366173533315
+      villager_idle inim_6: -1069243281373248394
+      villager_idle inim_7: -1453163518102853818
+      villager_idle inim_8: 5897939901917998050
+      villager_idle inim_9: -6765416881850634112
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

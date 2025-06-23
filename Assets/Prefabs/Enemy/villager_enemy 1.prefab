@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4334560341580678408}
   - component: {fileID: 8725409903619051170}
   m_Layer: 6
-  m_Name: warrior_enemy
+  m_Name: villager_enemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ SpriteRenderer:
   m_SortingLayerID: -1152175497
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1127698895, guid: 6db3a1168118c9c4a9b82dbff29f99c5, type: 3}
+  m_Sprite: {fileID: 5329163749918939368, guid: eb8f6f9f32864534b8ffcd4ca52f1d80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -284,7 +284,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.24, y: 0.24}
+    oldSize: {x: 0.1, y: 0.17}
     newSize: {x: 0.24, y: 0.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -354,7 +354,7 @@ Animator:
   m_GameObject: {fileID: 8358180109304160676}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: cd1970e1c43ba9242aa09c7846eac5cc, type: 2}
+  m_Controller: {fileID: 22100000, guid: 8fb8eeeaa30f6274a9d87bea6c33dcef, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca873987ed6b7dc45937d745c53ae70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitData: {fileID: 11400000, guid: 86eecc2350679244e81b32faaa310cc7, type: 2}
+  unitData: {fileID: 11400000, guid: 7a613f50f9908064caf2671e24c4f541, type: 2}
   healthFill: {fileID: 5376778546228361033}
   damageClip: {fileID: 0}
   deathClip: {fileID: 0}
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a9d7cd7de1c3d4c8ff60392fb947f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitData: {fileID: 11400000, guid: 86eecc2350679244e81b32faaa310cc7, type: 2}
+  unitData: {fileID: 11400000, guid: 7a613f50f9908064caf2671e24c4f541, type: 2}
   retargetRange: 5
 --- !u!1 &9156004285052423928
 GameObject:
