@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5763618088226428440}
   - component: {fileID: 2624934032913812273}
   - component: {fileID: 4799093845615501424}
+  - component: {fileID: -7107633449400119167}
   m_Layer: 0
   m_Name: Barracks
   m_TagString: Untagged
@@ -186,6 +187,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906fa60288df2ab47845c2ac73729239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Campo de Treino
-  unitToSpawn: {fileID: 0}
-  spawnPoint: {fileID: 7360722225527872009}
+  buildingData: {fileID: 11400000, guid: 2d1b5a0cb40b9d444afcd76557617b3a, type: 2}
+--- !u!114 &-7107633449400119167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160895912506530235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5e9bf4d5699f5409c27ffbf0c67701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}

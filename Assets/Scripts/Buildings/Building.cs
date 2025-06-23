@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    public string buildingName = "Edifício";
-    public GameObject actionPanel; // painel UI associado a este edifício
+    public BuildingData buildingData; // Dados do edifício
 
     public virtual void OnSelect()
     {
-        Debug.Log("Selecionado: " + buildingName);
-        if (actionPanel != null)
+        if (buildingData != null)
         {
-            BuildingUIManager.Instance.ShowPanel(actionPanel, this);
+            Debug.Log("Selecionado: " + buildingData.buildingName);
+            BuildingUIManager.Instance.ShowPanel(this);
+        }
+        else
+        {
+            Debug.LogWarning("[Building] Nenhum BuildingData atribuído ao edifício " + gameObject.name);
         }
     }
+
 }

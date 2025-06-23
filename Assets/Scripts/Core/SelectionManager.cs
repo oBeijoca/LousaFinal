@@ -62,12 +62,13 @@ public class SelectionManager : MonoBehaviour
             if (health != null && health.unitData != null && health.unitData.unitType == UnitData.UnitType.Villager)
             {
                 UnitUI.Instance?.Show();
-                BuildingUIManager.Instance.HideAllPanels();
+                BuildingUIManager.Instance.HideCurrentPanel();
             }
             else
             {
                 UnitUI.Instance?.Hide();
-                BuildingUIManager.Instance.HideAllPanels();
+                BuildingUIManager.Instance.HideCurrentPanel();
+
             }
         }
     }
@@ -88,7 +89,7 @@ public class SelectionManager : MonoBehaviour
         selectedObjects.Clear();
 
         UnitUI.Instance?.Hide();
-        BuildingUIManager.Instance.HideAllPanels();
+        BuildingUIManager.Instance.HideCurrentPanel();
     }
 
     public void DeselectAllPublic()

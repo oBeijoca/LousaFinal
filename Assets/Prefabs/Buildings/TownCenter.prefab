@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4252344984789376700}
   - component: {fileID: 4739189186803686828}
   - component: {fileID: 2260508737951553972}
-  - component: {fileID: -8417785329743976886}
+  - component: {fileID: 1952914618638997097}
   m_Layer: 7
   m_Name: TownCenter
   m_TagString: Deposit
@@ -259,9 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5e9bf4d5699f5409c27ffbf0c67701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionPanel: {fileID: 0}
-  recruitVillagerButton: {fileID: 0}
---- !u!114 &-8417785329743976886
+  panel: {fileID: 0}
+--- !u!114 &1952914618638997097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,6 +272,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906fa60288df2ab47845c2ac73729239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Centro da Vila
-  unitToSpawn: {fileID: 8358180109304160676, guid: 7fee44ac09406014282b7acbf3d3e5c4, type: 3}
-  spawnPoint: {fileID: 7091410075333369283}
+  buildingData: {fileID: 11400000, guid: bcfd668a77c159f499bccc2bd9d260f3, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b19598784c842247816980d1ced7205, type: 3}
   m_Name: Villager
   m_EditorClassIdentifier: 
-  unitName: "Alde\xE3o"
+  unitName: Villager
   maxHealth: 20
   attackDamage: 1
   attackRange: 0.25
