@@ -9,6 +9,7 @@ TagManager:
   - ClickMarker
   - Deposit
   - Enemy
+  - EnemyBuilding
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Building
   - Resources
   - Ground
-  - 
+  - EnemyBuilding
   - 
   - 
   - 
