@@ -33,6 +33,6 @@ public class VictoryHandler : MonoBehaviour
     void HandleFinishDestroyed()
     {
         Debug.Log("🏆 Vitória! O centro inimigo foi destruído!");
-        //SceneManager.LoadScene("WinScene");
+        SceneManager.LoadScene("WinScene");
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TownCenterInimigo
   m_EditorClassIdentifier: 
   unitName: FINISH
-  maxHealth: 10
+  maxHealth: 200
   attackDamage: 0
   attackRange: 0
   attackRate: 0
